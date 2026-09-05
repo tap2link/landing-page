@@ -1,0 +1,374 @@
+{
+  "/images/hero/main-cover.jpg": [
+    1900,
+    1188
+  ],
+  "/images/icons/nfc-white.png": [
+    80,
+    80
+  ],
+  "/images/icons/employee-card.png": [
+    80,
+    80
+  ],
+  "/images/icons/plus-white.png": [
+    40,
+    40
+  ],
+  "/images/icons/connection.png": [
+    80,
+    80
+  ],
+  "/images/icons/ball.png": [
+    80,
+    80
+  ],
+  "/images/icons/leaf.png": [
+    81,
+    80
+  ],
+  "/images/icons/profiles.png": [
+    81,
+    80
+  ],
+  "/images/icons/calendar.png": [
+    81,
+    80
+  ],
+  "/images/icons/wallet.png": [
+    81,
+    80
+  ],
+  "/images/icons/service.png": [
+    80,
+    80
+  ],
+  "/images/icons/search.png": [
+    80,
+    80
+  ],
+  "/images/icons/money-white.png": [
+    80,
+    80
+  ],
+  "/images/icons/ball-dark.png": [
+    80,
+    80
+  ],
+  "/images/icons/tractor.png": [
+    80,
+    80
+  ],
+  "/images/icons/envelope-white.png": [
+    80,
+    80
+  ],
+  "/images/icons/paper-white.png": [
+    80,
+    80
+  ],
+  "/images/agro/aim.png": [
+    240,
+    240
+  ],
+  "/images/agro/qr-code.png": [
+    240,
+    240
+  ],
+  "/images/agro/checklist.png": [
+    240,
+    240
+  ],
+  "/images/agro/magnifying-glass.png": [
+    240,
+    240
+  ],
+  "/images/agro/moerschen-logo.png": [
+    232,
+    232
+  ],
+  "/images/agro/tractor-card-1.png": [
+    520,
+    520
+  ],
+  "/images/agro/tractor-card-2.png": [
+    430,
+    430
+  ],
+  "/images/agro/tractor-card-3.png": [
+    430,
+    430
+  ],
+  "/images/icons/code.png": [
+    80,
+    80
+  ],
+  "/images/icons/leaf-outline.png": [
+    80,
+    80
+  ],
+  "/images/icons/integration.png": [
+    80,
+    80
+  ],
+  "/images/icons/employees.png": [
+    80,
+    80
+  ],
+  "/images/icons/custom-design.png": [
+    80,
+    80
+  ],
+  "/images/business/quote-mark.png": [
+    272,
+    214
+  ],
+  "/images/business/profiles-strip-1.png": [
+    4444,
+    292
+  ],
+  "/images/business/profiles-strip-2.png": [
+    4444,
+    292
+  ],
+  "/images/business/profiles-strip-3.png": [
+    4444,
+    292
+  ],
+  "/images/icons/card.png": [
+    80,
+    80
+  ],
+  "/images/icons/envelope.png": [
+    80,
+    80
+  ],
+  "/images/icons/desktop.png": [
+    80,
+    80
+  ],
+  "/images/icons/calendar-outline.png": [
+    80,
+    80
+  ],
+  "/images/icons/money.png": [
+    80,
+    80
+  ],
+  "/images/icons/sponsor.png": [
+    80,
+    80
+  ],
+  "/images/clubs/club-cards.png": [
+    527,
+    501
+  ],
+  "/images/clubs/club-status.png": [
+    497,
+    264
+  ],
+  "/images/clubs/club-app-view.png": [
+    429,
+    480
+  ],
+  "/images/clubs/club-members.png": [
+    503,
+    336
+  ],
+  "/images/clubs/invite.png": [
+    276,
+    228
+  ],
+  "/images/clubs/payment.png": [
+    338,
+    258
+  ],
+  "/images/clubs/custom-url.jpg": [
+    585,
+    497
+  ],
+  "/images/pricing/custom-card-design.png": [
+    984,
+    599
+  ],
+  "/images/pricing/user-photo.png": [
+    244,
+    244
+  ],
+  "/images/pricing/link-image.png": [
+    335,
+    272
+  ],
+  "/images/pricing/designer.png": [
+    794,
+    1190
+  ],
+  "/images/partners/venture-labs.png": [
+    176,
+    67
+  ],
+  "/images/partners/one-hive.png": [
+    176,
+    66
+  ],
+  "/images/partners/content-creators.png": [
+    176,
+    66
+  ],
+  "/images/partners/rhein-fire.png": [
+    176,
+    67
+  ],
+  "/images/partners/gerch.png": [
+    176,
+    66
+  ],
+  "/images/partners/bms-corporate-solutions.png": [
+    176,
+    66
+  ],
+  "/images/partners/christkindlmarkt.png": [
+    176,
+    66
+  ],
+  "/images/partners/moerschen.png": [
+    176,
+    67
+  ],
+  "/images/partners/payfree.png": [
+    176,
+    67
+  ],
+  "/images/partners/ekp.png": [
+    176,
+    66
+  ],
+  "/images/partners/leipzig-kings.png": [
+    176,
+    66
+  ],
+  "/images/partners/oceanmata.png": [
+    176,
+    66
+  ],
+  "/images/partners/sedumdach.png": [
+    176,
+    66
+  ],
+  "/images/badges/app-store-white.png": [
+    222,
+    75
+  ],
+  "/images/badges/google-play-white.png": [
+    222,
+    75
+  ],
+  "/images/badges/google-play-dark.png": [
+    222,
+    75
+  ],
+  "/images/shop/abyss-blue-card.png": [
+    1024,
+    660
+  ],
+  "/images/shop/simply-violet-card.png": [
+    1024,
+    660
+  ],
+  "/images/shop/pure-black-card.png": [
+    1024,
+    660
+  ],
+  "/images/shop/island-turquoise-card.png": [
+    1024,
+    660
+  ],
+  "/images/shop/diamond-white-card.png": [
+    1024,
+    660
+  ],
+  "/images/use-cases/moerschen-hero.jpg": [
+    1900,
+    1267
+  ],
+  "/images/use-cases/maintenance-hero.jpg": [
+    2000,
+    1334
+  ],
+  "/images/use-cases/events-hero.jpg": [
+    1900,
+    1267
+  ],
+  "/images/use-cases/rhein-fire-hero.jpg": [
+    1900,
+    1267
+  ],
+  "/images/icons/qr-code-white.png": [
+    80,
+    80
+  ],
+  "/images/icons/settings-white.png": [
+    80,
+    80
+  ],
+  "/images/icons/refrigerator.png": [
+    80,
+    80
+  ],
+  "/images/icons/event-white.png": [
+    80,
+    80
+  ],
+  "/images/icons/scan.png": [
+    80,
+    80
+  ],
+  "/images/icons/tickets-white.png": [
+    80,
+    80
+  ],
+  "/images/use-cases/moerschen-profile.png": [
+    498,
+    1080
+  ],
+  "/images/use-cases/moerschen-sticker.png": [
+    1076,
+    1240
+  ],
+  "/images/use-cases/moerschen-confirm-product.png": [
+    390,
+    735
+  ],
+  "/images/use-cases/events-app.jpg": [
+    780,
+    1616
+  ],
+  "/images/use-cases/rhein-fire-profile.jpg": [
+    498,
+    1080
+  ],
+  "/images/use-cases/rhein-fire-event.jpg": [
+    498,
+    1080
+  ],
+  "/images/blog/oceanmata-x-tap2link.jpg": [
+    1200,
+    628
+  ],
+  "/images/blog/moerschen-case-study.png": [
+    1200,
+    639
+  ],
+  "/images/blog/gerchgroup.jpg": [
+    3000,
+    1780
+  ],
+  "/images/blog/tap2link-in-the-efl.jpg": [
+    2000,
+    1187
+  ],
+  "/images/blog/moerschen-event.jpg": [
+    1900,
+    1144
+  ]
+}

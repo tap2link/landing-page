@@ -1,0 +1,423 @@
+{
+  "nav": {
+    "useCases": "Anwendungsfälle",
+    "agro": "Agro-Lösungen",
+    "business": "Für Unternehmen",
+    "clubs": "Vereine",
+    "shop": "Shop",
+    "pricing": "Preise",
+    "other": "Anderes",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "login": "Einloggen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "latestPost": "Neuester Beitrag"
+  },
+  "useCases": {
+    "moerschen": "Moerschen",
+    "maintenance": "Wartung",
+    "events": "Veranstaltungen",
+    "rheinFire": "Rhein Fire"
+  },
+  "common": {
+    "contactUs": "Kontaktieren Sie uns",
+    "learnMore": "Mehr erfahren",
+    "showLess": "Weniger anzeigen",
+    "readPost": "Beitrag lesen",
+    "getStarted": "Los geht's",
+    "readUseCase": "Anwendungsfall lesen",
+    "goToUseCase": "Weiter zum Anwendungsfall",
+    "watchVideo": "Video ansehen",
+    "scheduleDemo": "Demo vereinbaren",
+    "backToBlog": "Zurück zum Blog",
+    "whatWeOffer": "Was wir anbieten",
+    "useCase": "Anwendungsfall",
+    "pricing": "Preise",
+    "testimonials": "Testimonials",
+    "tableOfContents": "Inhaltsübersicht",
+    "downloadAppStore": "tap2link aus dem App Store herunterladen",
+    "downloadGooglePlay": "tap2link von Google Play herunterladen",
+    "appStoreAlt": "Laden im App Store",
+    "googlePlayAlt": "Jetzt bei Google Play"
+  },
+  "footer": {
+    "company": "Tap2link GmbH",
+    "street": "Breite Str. 27",
+    "city": "40213 Düsseldorf",
+    "country": "Deutschland",
+    "download": "tap2link herunterladen:",
+    "solutions": "Lösungen",
+    "forIndividuals": "Für Einzelpersonen",
+    "useCases": "Anwendungsfälle",
+    "other": "Anderes",
+    "contacts": "Kontakte",
+    "socials": "Soziale Netzwerke",
+    "copyright": "© {year}, tap2link. Alle Rechte vorbehalten.",
+    "imprint": "Impressum",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "shipping": "Versandrichtlinien"
+  },
+  "seo": {
+    "home": {
+      "title": "Tap2link – NFC- und QR-Code-App",
+      "description": "Entdecken Sie Tap2link und verwalten Sie Veranstaltungen oder teilen Sie Informationen mit NFC- und QR-Codes – ideal für Unternehmen und Sportvereine."
+    },
+    "pricing": {
+      "title": "NFC-Lösungen - Preise und Pakete",
+      "description": "Flexible Preise und Pakete für NFC-Lösungen bei t2l.ink – finden Sie das ideale Angebot und optimieren Sie Ihre Prozesse!"
+    },
+    "business": {
+      "title": "NFC-Lösungen für Mitarbeitermanagement und Vernetzung",
+      "description": "Optimieren Sie Ihre Mitarbeiterverwaltung und -vernetzung mit der NFC-Technologie. Unsere Lösungen bieten digitalen Zugang und effizientes Management."
+    },
+    "clubs": {
+      "title": "NFC-Lösungen für Vereine und Clubs",
+      "description": "Verbinden Sie Mitglieder und optimieren Sie ihre Clubverwaltung mit unseren NFC-Lösungen. Perfekt für Sportvereine, Fitnessclubs und mehr."
+    },
+    "agro": {
+      "title": "t2l Agro solution: Ihr digitales Werkzeug für den Maschinenhandel",
+      "description": "Entdecken Sie Ihre Serviceunterstützung und Maschinenverwaltung mit einem vollständig integrierten System mit NFC-Karten und QR-Codes zu Ihrer Verfügung neu."
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "description": "Entdecken Sie Antworten auf die häufigsten Fragen zu unseren digitalen Visitenkarten, NFC-Chips, Dienstleistungen und mehr."
+    },
+    "contact": {
+      "title": "Kontakt aufnehmen mit Tap2link",
+      "description": "Nehmen Sie Kontakt mit Tap2Link auf! Wir beantworten Ihnen gerne alle Fragen zu unseren NFC- und QR-Code-Lösungen sowie zu individuellen Angeboten."
+    },
+    "blog": {
+      "title": "NFC-Technologie und Digitalisierung - Trends und Tipps",
+      "description": "Lesen Sie im Blog die neuesten Artikel zu NFC-Technologie und Digitalisierung und optimieren Sie Prozesse in Unternehmen und Vereinen."
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "Ihr Leben ein bisschen einfacher machen.",
+      "text": "Verwalten Sie Dienste, rocken Sie Ihre Veranstaltungen und vernetzen Sie sich wie nie zuvor. Alles mit einem Fingertipp und einem Lächeln!",
+      "wordmark": "tap2link",
+      "imageAlt": "Eine lächelnde Frau in Jeansjacke mit ihrem Smartphone.",
+      "bullets": [
+        "Verwalten von Veranstaltungen",
+        "Verwalten von Messen",
+        "Physische Produkte mit Software verbinden",
+        "Austausch von Geschäftskontakten",
+        "Informationen austauschen"
+      ]
+    },
+    "assistant": {
+      "title": "Ihr persönlicher digitaler Assistent ist nur einen Fingertipp entfernt",
+      "text": "Tap2link ist die App, die Ihnen das Leben einfacher macht. Sie müssen Dienste verwalten? Tap2link erledigt das mit Leichtigkeit. Sie arbeiten in der Agrarindustrie? Behalten Sie mühelos den Überblick über Ihre Maschinen und Serviceanfragen. Planen Sie eine Veranstaltung? Genießen Sie reibungslose Check-ins und spezielle VIP-Pässe. Außerdem ist es ein Kinderspiel, Kontakte zu knüpfen - tippen Sie einfach auf und teilen Sie Ihre Informationen. Tap2link macht alles einfacher, organisierter und macht viel mehr Spaß!"
+    },
+    "partners": {
+      "title": "Unsere Partner vertrauen uns",
+      "logos": [
+        "Venture Labs",
+        "One Hive",
+        "Content & Creators",
+        "Rhein Fire",
+        "Gerch Group",
+        "BMS Corporate Solutions",
+        "Christkindlmarkt",
+        "Moerschen",
+        "Payfree",
+        "EK&P",
+        "Leipzig Kings",
+        "Oceanmata",
+        "SedumDach"
+      ]
+    },
+    "features": {
+      "title": "Eigenschaften",
+      "text": "Entdecken Sie, wie unsere App das Servicemanagement vereinfacht, Ihre landwirtschaftlichen Abläufe verbessert, das Veranstaltungserlebnis steigert und die Kontaktaufnahme mit anderen zu einer einfachen Aufgabe macht.",
+      "items": [
+        {
+          "title": "Sofortige Verbindung",
+          "text": "Mit tap2link-Karten kannst du Kontaktdaten mühelos austauschen und dich mit potenziellen Kunden oder Kollegen verbinden – einfach durch einen simplen Tipp. Dies eliminiert die Notwendigkeit für den herkömmlichen Austausch von Visitenkarten.",
+          "more": "Erhalte einen Wettbewerbsvorteil, indem du schnell Kontaktdaten mit potenziellen Kunden oder Kollegen austauschst. Dadurch hinterlässt du einen bleibenden Eindruck und bleibst in einer schnelllebigen Geschäftsumgebung einen Schritt voraus."
+        },
+        {
+          "title": "Lösung für Clubmitglieder",
+          "text": "Entwickelt für alle Sportvereinsmitgliedschaften, Fitnesszentren und private Mitgliederclubs. Verwalten Sie Ihre Mitglieder, Preise und Ränge, fügen Sie einfach Newsletter hinzu und arbeiten Sie mit Ihren Partnern zusammen.",
+          "more": "Mitglieder können problemlos auf VIP-Bereiche zugreifen, von exklusiven Angeboten profitieren und bei Clubveranstaltungen nahtlose Zahlungen vornehmen. Und mit personalisierten digitalen Profilen war es noch nie so einfach, in Verbindung zu bleiben und über die Clubaktivitäten auf dem Laufenden zu bleiben."
+        },
+        {
+          "title": "Agro-Lösung",
+          "text": "Maßgeschneidert für die besonderen Bedürfnisse von Landwirten und landwirtschaftlichen Betrieben. Es vereinfacht die Verwaltung von Geräten und Serviceanfragen und hilft Ihnen, organisiert und effizient zu arbeiten.",
+          "more": "Sie können Produktinformationen leicht nachverfolgen und auf Handbücher zugreifen, um sicherzustellen, dass Ihre Maschinen immer reibungslos laufen. Mit Tap2link ist die Verbindung zu Serviceanbietern nur einen Fingertipp entfernt, was die Wartung einfacher und schneller denn je macht!"
+        },
+        {
+          "title": "Verwaltung von Dienstleistungen",
+          "text": "Entwickelt, um Ihre täglichen Abläufe zu vereinfachen. Es bietet eine effiziente Möglichkeit zur Bearbeitung von Serviceanfragen und gewährleistet einen reibungslosen Kundenservice in Ihrem Unternehmen.",
+          "more": "Dank QR-Aufklebern und deren Scannen mit der tap2link-App können Sie alle Ihre Dienstleistungen an einem Ort verfolgen und verwalten, ohne dass Sie mit mehreren Aufgaben jonglieren müssen."
+        },
+        {
+          "title": "Ereignis-Funktion",
+          "text": "Entwickelt, um die Verwaltung großer und kleiner Veranstaltungen zu vereinfachen. Erstellen Sie Veranstaltungen, legen Sie Ticketpreise fest, versenden Sie VIP-Pässe, laden Sie Ihre Mitarbeiter ein. Alles an einem Ort.",
+          "more": "Es ermöglicht ein einfaches Einchecken, so dass Ihre Gäste schnell und ohne lange Warteschlangen zum Spaß kommen können. Und mit Optionen für Ticketing, VIP-Pässe und nahtloses Networking können Sie ein unvergessliches Erlebnis schaffen, das alle Teilnehmer während der gesamten Veranstaltung in Verbindung hält und beschäftigt!"
+        },
+        {
+          "title": "Apple und Google Wallet",
+          "text": "Fügen Sie Ihre Karte zu Apple & Google Wallet hinzu. Diese Funktion stellt sicher, dass alle Ihre wichtigen Informationen bequem über Ihr Smartphone abrufbar sind.",
+          "more": "Durch die Integration Ihrer tap2link-Karte in Ihre digitale Brieftasche können Sie mit nur einem Fingertipp Kontaktdaten austauschen, Serviceanfragen erstellen und bei Veranstaltungen einchecken."
+        }
+      ]
+    },
+    "useCases": {
+      "eyebrow": "Anwendungsfälle",
+      "title": "Tauchen Sie ein in unsere Arbeit und sehen Sie in den folgenden Anwendungsfällen, wie unsere tap2link-Funktionen Ihr Leben einfacher machen können."
+    },
+    "shop": {
+      "title": "Shop",
+      "text": "Stöbere in einer breiten Palette von Farben und Ausführungen und wählen diejenige aus, die am besten zu dir passt.",
+      "price": "€12,90",
+      "cardAlt": "tap2link NFC-Karte",
+      "products": [
+        "Abyss Blue Card - QR",
+        "Simply Violet",
+        "Pure Black Card",
+        "Island Turquoise Card",
+        "Diamond White Card"
+      ]
+    },
+    "cta": {
+      "title": "Entfesseln Sie die Kraft der Konnektivität",
+      "text": "Füllen Sie das Kontaktformular aus. Lassen Sie uns zusammenkommen und besprechen, wie tap2link-Funktionen Ihr Leben einfacher machen können."
+    }
+  },
+  "pricing": {
+    "title1": "Wählen Sie Ihren",
+    "title2": "perfekten Plan",
+    "text": "Wählen Sie den Plan, der Ihren Bedürfnissen am besten entspricht.",
+    "tabGeneral": "Allgemeine Pläne",
+    "tabClubs": "Pläne für Clubs",
+    "trialBadge": "14 Tage kostenlos testen",
+    "trialNote": "* 14 Tage kostenlos testen",
+    "included": "Was enthalten ist:",
+    "allFrom": "Alle Funktionen von {plan} plus:",
+    "features": "Eigenschaften",
+    "plans": {
+      "basic": { "name": "Basic", "price": "Kostenlos" },
+      "professional": { "name": "Professional", "price": "4,99 €/Monat oder 49,99 €/Jahr" },
+      "enterprise": { "name": "Enterprise", "price": "Preis auf Anfrage" }
+    },
+    "rows": [
+      { "label": "Digitales Profil", "tiers": [true, true, true] },
+      { "label": "Links zu sozialen Medien im Profil", "tiers": [true, true, true] },
+      { "label": "Abschnitt „Meine Produkte“", "tiers": [true, true, true] },
+      { "label": "CRM-Integration", "tiers": [true, true, true] },
+      { "label": "E-Mail-Integration", "tiers": [true, true, true] },
+      { "label": "NFC-betriebene Karte", "note": "12 € / Karte", "tiers": [true, true, true] },
+      { "label": "NFC-betriebene Aufkleber", "note": "11 € / Aufkleber", "tiers": [true, true, true] },
+      { "label": "24/7 Premium-Unterstützung", "tiers": [false, true, true] },
+      { "label": "Mehrere Profile", "tiers": [false, true, true] },
+      { "label": "Verwaltungsbereich", "tiers": [false, false, true] },
+      { "label": "Seite des Unternehmens", "tiers": [false, false, true] },
+      { "label": "Konto pro Mitarbeiter", "tiers": [false, false, true] },
+      { "label": "Benutzerdefinierte Funktionen", "tiers": [false, false, true] }
+    ],
+    "clubs": {
+      "name": "Vereine",
+      "price": "Preis auf Anfrage",
+      "features": [
+        "Physische Mitgliedskarte",
+        "Maßgeschneiderte Landing Page",
+        "Monatliche Auszahlungen",
+        "Newsletter und Kommunikation",
+        "Check-in der Veranstaltung",
+        "Integration von Sponsoren"
+      ],
+      "cardTitle": "Mitgliedschaftskarten für Clubs",
+      "cardText": "Bringe die Engagement-Bemühungen deines Sportvereins auf das nächste Level mit einem individuellen tap2link-Mitgliedschaftsplan.",
+      "ctaTitle": "Erhöhen Sie Ihr Sportverein-Erlebnis mit tap2link",
+      "ctaText": "Stärke Deinen Sportverein mit der NFC-basierten App von tap2link, die den Fans anpassbare Mitgliedsstufen und sichere Zahlungsoptionen bietet. Binde Sponsoren ein, um exklusive Rabatte über unsere Clubkarte anzubieten. Entdecke das volle Potenzial Deines Vereins und informiere Dich über die Preise, indem Du dich noch heute mit unserem Vertriebsteam in Verbindung setzt."
+    },
+    "workshop": {
+      "title": "Design-Workshop",
+      "text": "Verbessere Dein tap2link-Erlebnis mit unseren Design Workshops. Kontaktiere uns für Preisanfragen.",
+      "cardDesign": "Individuelle Kartengestaltung",
+      "cardDesignAlt": "Blaue NFC-Karte von Tap2link mit individuellem Design",
+      "profileDesign": "Kundenspezifische Profilgestaltung",
+      "profileName": "Beitris Hume",
+      "profileRole": "Chefkoch",
+      "profileAlt": "Bild einer rothaarigen Frau mit blauem Oberteil als Beispiel wie ein Profil aussehen kann",
+      "oneHour": "Einstündiger Workshop",
+      "threeRounds": "Drei Runden von Design-Entwürfen",
+      "seniorDesigner": "Treffen mit dem Chefdesigner",
+      "seniorDesignerAlt": "Eine Hand auf einer Computermaus"
+    },
+    "cta": {
+      "title": "Interessiert an tap2link-Lösungen und angezogen von unseren wettbewerbsfähigen Preisen?",
+      "text": "Wir würden uns freuen, von Ihnen zu hören! Nehmen Sie noch heute Kontakt mit uns auf, um mehr darüber zu erfahren, wie unsere Preispläne Ihren Bedürfnissen entsprechen können. Unser Team hilft Ihnen gerne bei Ihren ersten Schritten und beantwortet alle Ihre Fragen."
+    }
+  },
+  "agro": {
+    "title": "Digitale Tools für schwere Maschinen",
+    "text": "Vereinfachen Sie Support und Maschinenmanagement mit einem vollständig integrierten System.",
+    "why": {
+      "title": "Warum tap2link für den Schwermaschinenhandel?",
+      "text": "Tap2link bietet eine Reihe von Tools, mit denen Ihre Kunden schnell auf den Support zugreifen und Ersatzteile bestellen können.",
+      "items": [
+        { "eyebrow": "Erster Vorteil", "title": "Zentralisierte Verwaltung", "text": "Verwalten Sie Kunden und Maschinen einfach über ein zentrales Dashboard.", "alt": "Eine Illustration einer Zielscheibe." },
+        { "eyebrow": "Zweiter Vorteil", "title": "QR-basierte Bestellung", "text": "Kunden können Ersatzteile direkt durch Scannen von QR-Codes bestellen.", "alt": "Eine Illustration eines QR-Codes." },
+        { "eyebrow": "Dritter Vorteil", "title": "Tracking von Maschinen", "text": "Verfolgen Sie die Wartungs- und Kaufhistorie aller Maschinen.", "alt": "Eine Illustration einer Checkliste." },
+        { "eyebrow": "Vierter Vorteil", "title": "Sofortige Einblicke", "text": "Unmittelbarer Zugriff auf maschinenspezifische Daten und Kundeninformationen.", "alt": "Eine Illustration einer Lupe." }
+      ]
+    },
+    "how": {
+      "eyebrow": "Tap2link im Detail",
+      "title": "Wie es funktioniert",
+      "text": "Tap2link bietet Ihnen ein vollständig angepasstes Profil und Dashboard, um alle Ihre Kunden und Maschinen auf einen Blick zu verwalten. Durch einfaches Importieren bestehender Kunden und Maschinen via CSV ist das System sofort einsatzbereit. Ihre Kunden können mit nur einem QR-Code-Scan Ersatzteile bestellen oder Support anfordern.",
+      "steps": [
+        { "title": "Alle Maschinen und Kunden importieren", "text": "Einfaches Hochladen von Maschinen- und Kundeninformationen über das von Ihnen festgelegte Dashboard." },
+        { "title": "QR-Code-Unterstützung", "text": "Kunden scannen einen QR-Code, um sofort auf Ersatzteile zuzugreifen oder technische Unterstützung anzufordern." },
+        { "title": "Automatisierte Informationsübertragung", "text": "Alle Maschinen- und Kundendaten werden direkt an Sie übermittelt, so dass Sie effizient reagieren können." },
+        { "title": "Übersicht über das Dashboard", "text": "Verfolgen Sie, welche Maschinen bei welchen Kunden stehen, wann sie zuletzt gewartet wurden und wie viele Maschinen jeder Kunde besitzt." }
+      ]
+    },
+    "useCase": {
+      "title1": "Erfolgreiche Integration mit",
+      "title2": "oerschen",
+      "logoAlt": "Ein weißes Moerschen-Logo in einem roten Quadrat.",
+      "text": "Moerschen, ein führender Agrarhändler, setzt tap2link erfolgreich ein, um seinen Kunden einen nahtlosen, digitalen Support und Ersatzteilbestellungen zu bieten. Mit tap2link hat Moerschen seinen Service verbessert und interne Prozesse optimiert.",
+      "cardAlt": "Eine Traktor-Vorschaukarte aus der tap2link-App."
+    },
+    "pricing": {
+      "title": "Flexible und völlig transparente Preise",
+      "text": "Tap2link bietet flexible Preismodelle, die auf die Bedürfnisse von großen Maschinenhändlern zugeschnitten sind. Wählen Sie den Plan, der zu Ihrem Unternehmen passt und genießen Sie eine transparente, skalierbare Preisstruktur.",
+      "setupFee": "Einrichtungsgebühr",
+      "setupPrice": "2500€",
+      "included": "Was enthalten ist:",
+      "includes": ["tap2link-Profil", "kundenspezifisches Design", "Dashboard", "Kundenprofile", "Produktkatalog"],
+      "licence": "Monatliche Lizenzgebühr:",
+      "tiers": [
+        { "label": "Bis zu 50 Maschinen", "price": "50€" },
+        { "label": "Bis zu 200 Maschinen", "price": "160€" },
+        { "label": "Bis zu 500 Maschinen", "price": "300€" },
+        { "label": "Über 500 Maschinen", "price": "400€" }
+      ],
+      "stickers": "QR-Aufkleber für Maschinen",
+      "stickerPrice": "2,10€ / Aufkleber"
+    },
+    "cta": {
+      "title": "Bereit, Ihr Großmaschinengeschäft zu digitalisieren?",
+      "text": "Setzen Sie sich mit uns in Verbindung, um zu erfahren, wie tap2link Ihnen helfen kann, Ihre Support- und Managementprozesse zu verbessern. Unser Team ist bereit, Ihnen eine maßgeschneiderte Lösung zu bieten."
+    }
+  },
+  "business": {
+    "title": "Karten für Unternehmen",
+    "text": "Verbessern Sie die Arbeitsabläufe im Kontaktmanagement Ihres Unternehmens. Nutzen Sie tap2link, um reibungslos durch die Geschäftswelt zu segeln! NFC-Lösungen für Mitarbeitermanagement und Networking.",
+    "features": {
+      "title": "Eigenschaften",
+      "text": "Tauchen Sie in die Funktionen von tap2link ein, die genau auf Ihre geschäftlichen Anforderungen zugeschnitten sind. Netzwerken war noch nie so einfach!",
+      "items": [
+        { "title": "Eine Visitenkarte pro Mitarbeiter", "text": "Unsere Visitenkarte ist gut für die Umwelt und ein hervorragender Weg ein Gespräch zu starten.", "more": "Es müssen nicht mehr mehrere Visitenkarten für jeden Mitarbeiter gedruckt werden. Dies spart Druckkosten und sorgt für Einheitlichkeit im gesamten Unternehmen." },
+        { "title": "Kundenspezifische Entwicklung der gewünschten Funktionen", "text": "Passen Sie tap2link-Karten an Ihre spezifischen Geschäftsanforderungen an, indem Sie maßgeschneiderte Informationen und Funktionalitäten für Ihr Geschäftsfeld implementieren.", "more": "Bleiben Sie flexibel, halten Sie sich über alle neuen Markttrends auf dem Laufenden und sorgen Sie dafür, dass die Karten perfekt auf Ihre Geschäftsprozesse abgestimmt sind." },
+        { "title": "Umweltfreundlichkeit", "text": "Begib dich auf den Weg der Nachhaltigkeit, indem du herkömmliche Papier-Businesskarten durch umweltfreundliche tap2link-Alternativen ersetzt. Reduziere Abfall und trage zu einer grüneren Zukunft bei.", "more": "Herkömmliche Visitenkarten aus Papier tragen zur Umweltverschmutzung bei. Mit der Einführung von tap2link-Visitenkarten reduzierst du den Papierverbrauch, förderst die Umweltverantwortung und zeigst dein Engagement für eine grünere Zukunft." },
+        { "title": "Integrieren Sie Ihre tap2link-Karte mit dem CRM Ihres Unternehmens", "text": "Verbinden Sie Ihre gewonnenen Kontakte mühelos mit dem CRM-System Ihres Unternehmens, um eine nahtlose Datensynchronisation und ein verbessertes Kundenmanagement zu gewährleisten.", "more": "Die Verwaltung von Kontaktdaten aus herkömmlichen Visitenkarten und deren manuelle Eingabe in ein CRM kann mühsam und fehleranfällig sein. tap2link erfasst die Kontaktdaten automatisch und sorgt für genaue und aktuelle Kundeninformationen, was Zeit (und Geld 😉 ) spart und die CRM-Effizienz insgesamt verbessert." },
+        { "title": "Verwalten Sie alle Ihre Mitarbeiterprofile in einem Dashboard", "text": "Optimieren Sie die Verwaltung von Mitarbeiterprofilen, indem Sie alle Profile in einem einzigen, benutzerfreundlichen Dashboard zusammenfassen.", "more": "NFC-Lösungen für die Verwaltung und Vernetzung von Mitarbeitern durch Vereinfachung der Profilverfolgung und Genauigkeit - eine häufige Herausforderung für Unternehmen. Mit tap2link erhalten Administratoren Zugang zu einem intuitiven Dashboard, um Mitarbeiterprofile zu verwalten und zu aktualisieren und so unternehmensweit einheitliche, aktuelle Informationen zu gewährleisten, ohne dass Visitenkarten neu gedruckt werden müssen." },
+        { "title": "Individuelle Gestaltung im Stil des Unternehmens", "text": "Behalten Sie eine einheitliche Markenidentität bei, indem Sie die tap2link-Kartendesigns an den Stil und die visuelle Ästhetik Ihres Unternehmens anpassen.", "more": "Ein kohärentes Branding in allen Netzwerken, von der Visitenkarte bis zum Mitarbeiterprofil, gibt Ihren potenziellen Kunden einen besseren Einblick in die Identität Ihrer Marke." },
+        { "title": "Option zum Hinzufügen Ihrer Produkte zum Unternehmensprofil", "text": "Präsentieren Sie Ihre Produkte oder Dienstleistungen direkt auf dem tap2link-Profil Ihres Unternehmens. Schaffen Sie Möglichkeiten für Werbung und Lead-Generierung über den einfachen Kontaktaustausch hinaus.", "more": "Bei herkömmlichen Visitenkarten fehlt die Möglichkeit, Produkte oder Dienstleistungen direkt darzustellen. tap2link-Karten bieten die Möglichkeit, Produktinformationen, Bilder oder Links hinzuzufügen, um potenziellen Kunden einen Einblick in das Angebot Ihres Unternehmens zu geben und das Interesse an Ihren Angeboten zu wecken." }
+      ]
+    },
+    "testimonials": {
+      "title": "Was sagen unsere Kunden?",
+      "items": [
+        { "text": "Mit tap2link können wir unseren Kunden eine nahtlose Möglichkeit bieten, Service und Ersatzteile für die Maschinen anzufordern, während alle Interaktionen in unserem CRM protokolliert werden. Dies ist nicht nur für unser Vertriebsteam hilfreich, sondern auch um die Kundenzufriedenheit zu verfolgen und zu verbessern. Die Anpassungsfähigkeit von t2l an unsere spezifischen Bedürfnisse war absolut überzeugend!", "author": "Moerschen" },
+        { "text": "Wir verwenden tap2link als unsere digitale Visitenkarte, mit allen SM-Links, wichtigen Artikeln und Kontakten, die alle an einem Ort verlinkt sind. Es ist sehr nützlich für die Social-Media-Bio - wir verwenden es jetzt seit einem Jahr auf allen Kanälen. Wir planen auch, in Zukunft einige physische Karten für das Team zu bestellen.", "author": "Miteinanderfit" },
+        { "text": "Alle unsere Mitarbeiter verwenden t2l-Karten täglich und wir können uns nicht vorstellen, zu herkömmlichen Visitenkarten zurückzukehren (ein besonderes Lob für die HubSpot-Integration, die den Prozess der Leadsammlung beschleunigt und gleichzeitig sehr effizient macht). Wir verwenden auch t2l NFC-Aufkleber auf Industriemessen, um unsere Produkte zu präsentieren, und das hat unsere Verkaufszahlen erheblich gesteigert. Sehr empfehlenswert!", "author": "Sedumdach" }
+      ]
+    },
+    "profilesAlt": "Eine Reihe von tap2link-Profilvorschauen.",
+    "cta": {
+      "title": "Möchten Sie neue Visitenkarten erstellen?",
+      "text": "Sie möchten Ihren CRM-Flow verbessern oder Ihre Firmenveranstaltungen aufwerten? Unser Expertenteam kann Ihnen helfen. Nehmen Sie noch heute Kontakt mit uns auf und erfahren Sie, wie unser Wissen und unsere Erfahrung Ihrem Unternehmen zugute kommen können."
+    }
+  },
+  "clubs": {
+    "title": "Mitgliedskarten für Clubs",
+    "text": "Bringe die Engagement-Bemühungen deines Sportvereins auf das nächste Level mit einem individuellen tap2link-Mitgliedschaftsplan.",
+    "showcase": {
+      "card": "Elegante Mitgliedskarte",
+      "cardAlt": "Drei individuell gestaltete Karten unseres Partners Rhein Fire.",
+      "status": "Einfache Statusprüfung",
+      "statusAlt": "Mitgliedsstatus-Anzeigen: Aktiv, Eingeladen oder Abgelaufen.",
+      "landing": "Die Landing Page Ihres Clubs",
+      "landingAlt": "Smartphone auf dem eine Übersicht von einer Firma zu sehen ist, Kartendesign sowie Memberprofile",
+      "plans": "Unterschiedliche Pläne",
+      "plansAlt": "Zwei Profilbeispiele, wie ein Account auf tap2link aussehen kann: Premium Member und Regular Member",
+      "invitations": "Sofortige Clubeinladungen",
+      "invitationsAlt": "Bestätigung, dass die Einladung gesendet wurde.",
+      "payments": "Zahlungsverhalten",
+      "paymentsAlt": "Zahlungseingangsbestätigungen",
+      "url": "Benutzerdefinierte Club-URL",
+      "urlAlt": "Screenshot der Profileinstellungen mit eigener URL und der Wahl zwischen öffentlichem und privatem Profil."
+    },
+    "features": {
+      "title": "Eigenschaften",
+      "text": "Werfen Sie einen Blick auf alle Funktionen des personalisierten Mitgliedschaftsprogramms tap2link - NFC-Lösungen für Verbände und Vereine.",
+      "items": [
+        { "title": "Physische Mitgliedskarte", "text": "tap2link bietet jedem Mitglied eine NFC-fähige, individuell gestaltete Clubkarte.", "more": "Diese individuell gestalteten, in die Brieftasche passenden, NFC-fähigen Clubkarten können als Tor zu allen clubbezogenen Aktivitäten dienen: vom Check-in bei Veranstaltungen bis zur Zahlungsmethode am Spieltag." },
+        { "title": "Newsletter und Kommunikation", "text": "Mit diesem Tool bleiben die Mitglieder informiert und engagiert. Es ermöglicht Vereinen und Organisationen, Aktualisierungen, Neuigkeiten und Werbeangebote per E-Mail oder In-App-Benachrichtigungen direkt an die Mitglieder zu senden.", "more": "Das Tool unterstützt die Erstellung und Planung von Newslettern und gewährleistet eine rechtzeitige und konsistente Kommunikation. Diese Funktion trägt dazu bei, eine starke Verbindung zu den Mitgliedern aufrechtzuerhalten und sie über alle aktuellen Ereignisse auf dem Laufenden zu halten." },
+        { "title": "Maßgeschneiderte Landing Page", "text": "Trete ins Rampenlicht mit der personalisierten tap2link-Landingpage deines Clubs, die deine Fans vom ersten Blick an fesselt.", "more": "Mit viel Sorgfalt gefertigt und auf den einzigartigen Stil deines Clubs zugeschnitten, erhältst du deine eigene, individuell gestaltete Mitgliedschafts-Website, ohne dass du einen zusätzlichen Entwickler engagieren musst. Tap2link kümmert sich um die Einrichtung des gesamten laufenden Systems mit Zahlungen, Links, Autorisierungen usw." },
+        { "title": "Check-in der Veranstaltung", "text": "Vereinfache das Management von Event-Teilnahmen mit der bequemen Check-in-Funktion von tap2link. Mitglieder können mühelos auf die Veranstaltung zugreifen, indem sie ihre tap2link-Karten verwenden.", "more": "Die Event Check-in-Funktion von tap2link vereinfacht den Prozess der Teilnehmerverwaltung für Veranstaltungen deines Clubs. Mitglieder können bequem mit ihren tap2link-Karten einchecken, was zu genauen Teilnahmerekorden führt und die Organisation von Veranstaltungen verbessert." },
+        { "title": "Monatliche Auszahlungen", "text": "Mit tap2link kann dein Club mühelos monatliche Auszahlungen von Mitgliedsbeiträgen und Transaktionen, die mit t2l-Karten getätigt wurden, sammeln.", "more": "Vereinfache deine finanziellen Abläufe und genieße die Bequemlichkeit automatisierter monatlicher Auszahlungen. Dadurch wird eine stabile Einnahmequelle gewährleistet und sowohl dein Club als auch seine Mitglieder profitieren von einem reibungslosen Erlebnis." },
+        { "title": "Integration von Sponsoren", "text": "Die Einbindung von Sponsoren in das Clubprofil bietet die Möglichkeit, Ihren Mitgliedern besondere Rabatte zu gewähren. Mit der Clubkarte können Sie mit Restaurants, Geschäften, Unternehmen und vielen anderen in Kontakt treten und deren Aktivitäten direkt über die tap2link-Plattform verfolgen.", "more": "Mitglieder können mit der tap2link Club Card ganz einfach von Angeboten und Rabatten profitieren, die von Clubsponsoren eingeführt wurden. Sponsoren können Sonderangebote und Rabatte für Clubmitglieder bequem verfolgen und verwalten. Sowohl der Club als auch seine Sponsoren können den Erfolg ihrer Angebote direkt auf der tap2link-Plattform verfolgen." }
+      ]
+    },
+    "cta": {
+      "title": "Sind Sie müde von Mitgliedschafts-Papierkram?",
+      "text": "Möchten Sie Ihre Sponsoring-Aktivitäten ausweiten? Fällt es Ihnen schwer, Vereinsveranstaltungen für Fans zu organisieren? Unser Expertenteam kann Ihnen helfen. Kontaktieren Sie uns noch heute und erfahren Sie, wie Ihr Verein von unserem Wissen und unserer Erfahrung profitieren kann."
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "text": "Sie haben Fragen? Wir haben die Antworten! Gehen Sie unsere häufig gestellten Fragen durch, um Informationen zu finden, die Sie suchen.",
+    "items": [
+      { "q": "Worum geht es bei tap2link?", "a": "Kurz gesagt, tap2link ist eine digitale Lösung, die vollständig angepasste Online-Profile mit Kontaktinformationen, SM-Links usw. sowie nachhaltige, mehrfach verwendbare NFC-Visitenkarten bietet." },
+      { "q": "Welche Größe sollten mein Profilbild und mein Hintergrund haben?", "a": "Sowohl Ihr Profilbild als auch Ihr Hintergrund sollten auf ein Quadrat zugeschnitten sein und eine Größe von 5 MB nicht überschreiten." },
+      { "q": "Braucht eine andere Person eine App, um mein t2l-Profil zu sehen?", "a": "Nein! Und genau das ist das Schöne an tap2link! Alles, was sie brauchen, ist ein Telefon, das NFC lesen kann. Es reicht, wenn Sie auf Ihre Karte tippen, damit das Profil erscheint. In anderen Fällen können Sie auch einfach die benutzerdefinierte URL Ihres Profils teilen." },
+      { "q": "Muss ich für tap2link bezahlen?", "a": "tap2link bietet Abonnementpläne an, aber Sie können zunächst mit einer kostenlosen 3-tägigen Testversion loslegen." },
+      { "q": "Kann ich ein tap2link-Profil auch ohne tap2link-Karte eröffnen?", "a": "Ja, Sie können jederzeit ein kostenloses Konto erstellen, ohne eine Karte zu besitzen. Teilen Sie einfach Ihr t2l-Profil per Link mit oder verwenden Sie es in Ihrer Social-Media-Bio. Was die Karte betrifft, können Sie sie später immer noch kaufen." },
+      { "q": "Ist es möglich, benutzerdefinierte/individuelle Kartendesigns zu erhalten?", "a": "Ja! Es ist möglich, für größere Bestellungen eine individuell gestaltete Karte zu erhalten. Schicken Sie uns einfach eine E-Mail: support{'@'}t2l.ink." },
+      { "q": "Wer kann mein tap2link-Profil sehen?", "a": "Das hängt ganz von Ihren Präferenzen ab. Sie können Ihr Profil entweder als privat einstellen und wählen, mit wem Sie es teilen, oder es öffentlich machen und die URL mit der ganzen Welt teilen (zum Beispiel für SM-Zwecke). Sie können Ihren Profilstatus jederzeit in den Einstellungen ändern, sowohl in der App als auch einfach, indem Sie sich in Ihr Profil auf t2l.ink einloggen." },
+      { "q": "Warum kann ich meine tap2link-Karte nicht mit meinem digitalen Profil verbinden?", "a": "Wenn Sie Probleme beim Verbinden Ihrer Karte haben, vergewissern Sie sich bitte zunächst, dass Sie nur einen tap2link-Tab in Ihrem Browser geöffnet haben. Wenn Sie tap2link auf zwei oder mehr Tabs in Ihrem Browser verwenden, wird dieser Vorgang nicht funktionieren. Wenn die Verbindung immer noch nicht funktioniert, kontaktieren Sie uns bitte unter support{'@'}t2l.ink und wir werden uns so schnell wie möglich um das Problem kümmern." },
+      { "q": "Ich habe meine Profilinformationen verloren. Wie kann ich mein Profil wiederherstellen?", "a": "Sie können einfach ein neues Passwort anfordern, indem Sie die Funktion „Passwort vergessen“ verwenden. Wenn Sie vergessen haben, welche E-Mail Sie für die Registrierung verwendet haben, kontaktieren Sie uns bitte unter support{'@'}t2l.ink." },
+      { "q": "Wie lange werde ich auf meine Bestellung warten müssen?", "a": "Die Lieferzeit innerhalb Europas beträgt in der Regel 4-8 Werktage, je nach Ihrem Standort. Bitte kontaktieren Sie uns, wenn Sie Ihre Bestellung nicht erhalten haben: support{'@'}t2l.ink." },
+      { "q": "Meine Bestellung ist nicht angekommen. Was kann ich tun?", "a": "Nachdem Sie Ihre Bestellung aufgegeben haben, kann es 7-10 Arbeitstage dauern, bis die Bestellung bei Ihnen eintrifft. Sollten Sie Ihre tap2link-Karte nach 10 Tagen noch nicht erhalten haben, kontaktieren Sie uns bitte unter support{'@'}t2l.ink." },
+      { "q": "Kann ich meine Bestellung zurückgeben?", "a": "Sie können Ihre t2l-Karte innerhalb der ersten 30 Tage nach dem Kauf zurückgeben. Senden Sie sie an: Donaustraße 36b, 41517 Grevenbroich, Deutschland. Bitte beachten Sie, dass Ihre Bestellung einer Rücknahmegebühr von 5 € unterliegt, sobald die Karte aktiviert wurde. Es tut uns leid, dies ist auf einen manuellen Rücksetzungsprozess zurückzuführen. Die Differenz wird Ihnen zurückerstattet." },
+      { "q": "Kann ich meine Bestellung stornieren?", "a": "Wenn Sie Ihre Bestellung stornieren möchten, kontaktieren Sie uns bitte unter support{'@'}t2l.ink. Wenn Ihre Bestellung bereits versandt wurde, können Sie Ihre Karte innerhalb der ersten 30 Tage zurückgeben." }
+    ],
+    "cta": {
+      "title": "Keine Antwort auf Ihre Frage gefunden?",
+      "text": "Nutzen Sie unser Kontaktformular, um Ihre Fragen zu stellen. Wir werden sie so schnell wie möglich beantworten."
+    }
+  },
+  "contact": {
+    "title": "Lassen Sie uns in Kontakt treten!",
+    "text": "Unser Support-Team ist bereit für Ihre Fragen und Ihr Feedback.",
+    "email": "contact{'@'}t2l.ink",
+    "form": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail-Adresse",
+      "company": "Unternehmen",
+      "message": "Nachricht",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet…",
+      "success": "Dankeschön! Ihre Nachricht wurde gesendet!",
+      "error": "Huch! Beim Absenden des Formulars ist etwas schief gelaufen.",
+      "privacyNote": "Mit dem Absenden dieses Formulars stimmen Sie unserer {privacy} zu."
+    }
+  },
+  "blog": {
+    "title": "Neueste Nachrichten",
+    "text": "Bleiben Sie informiert, inspiriert und verbunden mit unseren neuesten Nachrichten, während wir die unendlichen Möglichkeiten erforschen, die tap2link für Ihr Unternehmen bietet."
+  },
+  "useCasePage": {
+    "overview": "allgemeiner Überblick"
+  }
+}
