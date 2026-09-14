@@ -1,5 +1,5 @@
 // One call per page: title, description, Open Graph and Twitter tags, canonical URL.
-// The old Webflow site shipped a <title> and meta description per page (both are reproduced
+// The previous site shipped a <title> and meta description per page (both are reproduced
 // verbatim from there) but no Open Graph tags; those are added here. Titles get the " · tap2link"
 // suffix from nuxt.config's titleTemplate unless `fullTitle` is set.
 export interface PageSeo {

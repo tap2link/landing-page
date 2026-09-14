@@ -1,4 +1,4 @@
-// External links taken verbatim from the live Webflow site's HTML (2026-09-06).
+// External links taken verbatim from the previous live site's HTML (2026-09-06).
 export const LINKS = {
   /** header "Log in" button - the live header links to /welcome, not /login */
   login: 'https://t2l.ink/welcome',
