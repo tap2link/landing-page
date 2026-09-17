@@ -35,19 +35,22 @@ rewritten.
   original, not mine — I did not open a browser. They are marked `unverified`. The live original
   wins over this table: where a re-measured value differs by more than 10% from the number here,
   the measured value is the target and the report records both.
-- **Decision at gate 1 — the Shop section on the home page.** The original home goes use cases →
-  blue CTA → footer; the new one inserts `ShopCards` between them. Default for this task: keep it
-  and restyle it to the corrected scale. Removing it is one line in `app/pages/index.vue`.
-- **Decision at gate 1 — body font.** The original's body text is Inter throughout; this repo sets
-  body to Nunito Sans. `README.md` and the `main.css` header comment do record Nunito Sans, but as
-  a token *lifted from the old Webflow CSS*, not as a design decision — and the browser
-  contradicts the lift. Default for this task: body becomes Inter, Nunito Sans is dropped
-  entirely.
-- **Decision at gate 1 — self-hosting the fonts.** The constraint "self-hosted fonts only" is read
-  as applying to this task, so the runtime Google Fonts `<link>` in `nuxt.config.ts` goes away and
-  Inter ships as committed `woff2` files under `public/fonts/`. This needs no npm dependency (Inter
-  is SIL OFL, redistribution allowed). If the constraint only meant "add no *new* external font
-  request", say so and the Google Fonts link stays (with Nunito Sans removed from it).
+- **Decided at gate 1 (Christian, 2026-09-17) — the Shop section stays on the home page.** The
+  original home goes use cases → blue CTA → footer; the new one inserts `ShopCards` between them.
+  `ShopCards` keeps its place in `app/pages/index.vue` and is restyled to the corrected scale;
+  removing it is not part of this task.
+- **Decided at gate 1 (Christian, 2026-09-17) — the body font follows the original: body becomes
+  Inter, Nunito Sans is dropped entirely.** The note's condition ("unless the repo records a
+  deliberate decision for Nunito Sans") does not hold, checked on 2026-09-17: the `main.css` header
+  comment calls the fonts "design tokens lifted from the previous Webflow site's CSS", `README.md`
+  names Google Fonts (Inter + Nunito Sans) as a fact of the build, and none of the eight entries
+  under `README.md` "Decisions to confirm" concerns fonts. That is a lift, not a decision — and the
+  browser contradicts the lift.
+- **Decided at gate 1 (Christian, 2026-09-17) — the fonts are self-hosted, the stated default.**
+  The runtime Google Fonts `<link>` in `nuxt.config.ts` goes away and Inter ships as committed
+  `woff2` files under `public/fonts/`. This needs no npm dependency (Inter is SIL OFL,
+  redistribution allowed). If the files cannot be obtained at all, "Stop conditions" names the
+  defined fallback.
 - The header's scroll behaviour on the original home page is `unverified` (the reference images are
   single scroll positions). Default: on the home page the header floats over the photo and is not
   sticky; on every other page it stays exactly as today. The Implementer confirms against the live
@@ -66,7 +69,9 @@ rewritten.
 - Nothing outside the landing worktree is committed; screenshots are written into the design
   reference folder but not committed there.
 
-Correct me at gate 1, otherwise I proceed with these.
+Christian approved this spec at gate 1 on 2026-09-17 and asked for the round to run without a
+gate-1 stop, with every open question taking its stated default. The assumptions above stand as
+written, the three decisions settled as recorded.
 
 ## Context found
 
@@ -159,7 +164,8 @@ the store cards grow to ~210px and the corner glyph becomes a large cropped back
 larger cards, a real staggered (masonry-like) column offset, a dashed divider above the
 "Learn more" row and the plus right-aligned — and because it is shared, `/for-business` and
 `/clubs` inherit the same treatment, which is wanted. `HomeUseCases` moves its intro paragraph into
-the right half and grows titles, rows and the arrow button. `CtaBanner` grows and takes three
+the right half and grows titles, rows and the arrow button. The Shop section stays where it is and
+is restyled to the corrected scale like every other section. `CtaBanner` grows and takes three
 inline pills (two portraits + one icon) through a new optional prop, defaulting to today's
 two-icon behaviour so the other pages are unaffected. `AppFooter` keeps its structure and only
 grows type and vertical padding.
@@ -197,9 +203,9 @@ follow-up line in the report instead.
 | File | Change | Why |
 |---|---|---|
 | `app/assets/css/main.css` | Override `--text-xs … --text-7xl` (+ paired line-heights) with `clamp()`; widen `.container-page` (fluid side margin, ~1296px content at 1440); `--color-page: #ffffff`, add `--color-band: #f8f8fb`; drop `--font-body`, body → Inter; add `@font-face` for self-hosted Inter; optional reduced-motion-safe fade-in utility | Findings 2 + 13; one token block lifts every page |
-| `nuxt.config.ts` | Remove the two Google Fonts `preconnect` links and the stylesheet link | Self-hosted-fonts constraint |
+| `nuxt.config.ts` | Remove the two Google Fonts `preconnect` links and the stylesheet link | Self-hosted-fonts decision (gate 1) |
 | `public/fonts/` (new) | Inter `woff2` (latin + latin-ext), weights 400/500/600/700 | Self-hosting without an npm dependency |
-| `app/pages/index.vue` | `definePageMeta({ headerOverlay: true })`; band classes on the sections the original bands; keep or drop `<ShopCards />` per gate 1 | Finding 1 + 13 + the Shop decision |
+| `app/pages/index.vue` | `definePageMeta({ headerOverlay: true })`; band classes on the sections the original bands; `<ShopCards />` stays where it is | Finding 1 + 13 + the Shop decision (gate 1) |
 | `app/layouts/default.vue` | Read `route.meta.headerOverlay`, pass `:overlay` to `AppHeader`; no wrapper padding that would box the hero | Finding 1 |
 | `app/components/AppHeader.vue` | New `overlay?: boolean` prop → transparent, absolutely positioned over the hero (non-sticky), pills unchanged; language switch becomes a flag + code pill | Findings 1, 12 |
 | `app/components/HomeHero.vue` | Full-bleed square section outside the container; fluid `clamp()` wordmark at weight 600, no clipping at any width; headline left / sub-line right; mobile keeps the photo to the top; chips restyled per breakpoint (large full-width outlined cards with the plus **above** the label on phones, under a repeated `home.hero.tagline` heading; desktop per the original) | Findings 1, 3, 4 |
@@ -207,7 +213,7 @@ follow-up line in the report instead.
 | `app/components/PartnerLogos.vue` | One non-wrapping row, larger greyscale logos, generous spacing | Finding 6 |
 | `app/components/FeatureCards.vue` | Larger cards, real staggered column offsets, dashed divider above the "Learn more" row, plus right-aligned | Finding 7 (also lifts `/for-business`, `/clubs`) |
 | `app/components/HomeUseCases.vue` | Larger row titles and arrow buttons, ~80px rows, darker hairlines, intro paragraph in the right half | Finding 8 |
-| `app/components/ShopCards.vue` | Restyle to the corrected scale (only if the section is kept) | Finding 9, default = keep |
+| `app/components/ShopCards.vue` | Restyle to the corrected scale; the section is kept | Finding 9, kept by the gate-1 decision |
 | `app/components/CtaBanner.vue` | Grow to the original's size; new optional `pills` prop rendering three inline pills (two portraits + one icon); default stays today's two icons | Finding 10, other pages unaffected |
 | `public/images/cta/` (new) | The two portrait images from the original's CTA banner | Finding 10 |
 | `app/components/AppFooter.vue` | Larger logo and link type, more vertical padding (~720px at 1440); structure and the existing headings/hairlines unchanged | Finding 11 |
@@ -270,6 +276,10 @@ follow-up line in the report instead.
 23. If a scroll-in animation is shipped, it is CSS-only, all content is visible with JavaScript
     disabled, and `@media (prefers-reduced-motion: reduce)` disables it; if it is not shipped, the
     report lists it as a follow-up.
+24. The Shop section (`ShopCards`) is still rendered on `/` and `/de/`, in its current position
+    between the use-case section and the blue CTA banner, and it is restyled to the corrected
+    scale: at 1440 its card-title and card-body computed `font-size` values are each within ±10% of
+    the feature-card title and body values measured for criterion 3.
 
 ## Test plan
 
@@ -280,10 +290,11 @@ screenshot, as listed below.
 
 - Build: `npm run generate` from the worktree root, exit code checked.
 - Static checks over `.output/public/**`: the Nunito string (criterion 9), the Google Fonts hosts
-  (10), the internal-link crawl (17), the raw-i18n-key scan on `/de/index.html` (18).
+  (10), the internal-link crawl (17), the raw-i18n-key scan on `/de/index.html` (18), and the
+  presence of the Shop section in both generated home pages (24).
 - Browser pass against `npm run preview` (or the Netlify deploy preview) side by side with
   `https://www.t2l.ink/`, at 360, 390, 430, 768, 1280, 1440 and 1920, reading computed styles and
-  bounding boxes from DevTools for criteria 2-8, 11-16.
+  bounding boxes from DevTools for criteria 2-8, 11-16, 24.
 - Regression pass: `/pricing`, `/faq`, `/agro-solutions`, `/for-business`, `/clubs`, `/contact`,
   `/blog`, one use-case page and one blog article opened at 1440 and 390 in both locales, to confirm
   the shared scale, container, header and footer changes did not break them (criteria 6, 15) — and
@@ -311,6 +322,9 @@ The close-out report must carry, and not merely assert:
   element, original computed value, new computed value, delta %, all at 1440, read via
   `getComputedStyle` in DevTools on both sites. Any value re-measured differently from the
   "measured targets" table above is flagged with both numbers.
+- The Shop section's read-back (criterion 24): its presence in both generated home pages, its
+  position in the section order, and its measured card-title and card-body sizes at 1440 next to
+  the feature-card values from the table above.
 - A table of `document.documentElement.scrollWidth` vs `window.innerWidth` for `/` and `/de/` at
   360, 390, 430, 768, 1280, 1440, 1920 (criterion 8).
 - Side-by-side screenshots, **original left / new right**, at 1440x900 and 390x844, for the hero,
@@ -340,6 +354,7 @@ The close-out report must carry, and not merely assert:
 - No copy changes in `en.json` / `de.json` beyond adding strings the new markup needs.
 - No new pages, no PL/RO locales, no contact-form backend work.
 - No new npm dependency, no new Nuxt module, no runtime third-party resource.
+- No removal of the Shop section from the home page — it is kept and restyled (gate-1 decision).
 - No fixes to the page-specific differences found on the nine other top-level pages — they are
   listed, not fixed.
 - No `npm install` of an updated lockfile resolution; `package-lock.json` is left as it is.
@@ -355,8 +370,10 @@ The close-out report must carry, and not merely assert:
   team photo, or its provenance cannot be evidenced: stop and ask rather than committing it. The
   banner ships with icon pills until Christian decides.
 - Inter `woff2` files cannot be obtained without a network fetch the environment blocks, or
-  self-hosting would need an npm module: stop and ask; the fallback (keep the Google Fonts link,
-  drop Nunito Sans from it) is a gate-1 decision, not the Implementer's.
+  self-hosting would need an npm module: do not stop the round — ship the defined fallback (keep
+  the Google Fonts link in `nuxt.config.ts` with Nunito Sans removed from it, body still Inter),
+  record in the report that criterion 10 was not met and why, and list re-hosting as a follow-up.
+  Criteria 9 and the Inter body font still hold in that fallback.
 - Making the fluid `--text-*` scale land on the targets visibly breaks an inner page (overlapping
   type, a broken table on `/pricing`, clipped copy in German): stop and ask before either shrinking
   the home-page target or special-casing that page.
@@ -380,6 +397,9 @@ The close-out report must carry, and not merely assert:
 - German copy is longer than English; a larger type scale plus a wider container can still produce
   new line breaks in the nav, the footer headings and the CTA headline at `/de/`. Checked by "What
   to click" line 4, not by any automated check.
+- The Shop section has no counterpart on the original home page, so criterion 24 measures it
+  against the new page's own corrected scale rather than against the original — there is nothing to
+  compare it to side by side.
 - The original's partner row appears to scroll/marquee. This spec asks only for a single static row
   at the right size; a marquee (which would likely need JS or a long CSS animation) is deliberately
   not specified — if Christian wants the movement, it is a follow-up.
@@ -420,7 +440,7 @@ not one layer at a time — and none exceeds ~5 files.
    `layouts/default.vue`, `pages/index.vue`). The hero, the overlay header, the fluid wordmark, the
    mobile clipping bug and the per-breakpoint chips. Proves criteria 4-8, 12.
 3. **Mid-page sections** (~5 files: `AppStoreCards.vue`, `PartnerLogos.vue`, `FeatureCards.vue`,
-   `HomeUseCases.vue`, `ShopCards.vue`). Proves criteria 13, 14 and the offer/features/use-cases
+   `HomeUseCases.vue`, `ShopCards.vue`). Proves criteria 13, 14, 24 and the offer/features/use-cases
    screenshots.
 4. **CTA, footer, language pill and the page audit** (~5 files: `CtaBanner.vue`, `AppFooter.vue`,
    `AppHeader.vue` language pill, `public/images/cta/`, both locale files). Proves criteria 15, 18,
