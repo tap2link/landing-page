@@ -21,7 +21,8 @@ const socials = [
 
 <template>
   <footer class="bg-navy text-white">
-    <div class="container-page grid gap-14 pb-20 pt-24 lg:grid-cols-[1.2fr_repeat(4,1fr)] lg:gap-10 lg:pt-[7.5rem]">
+    <!-- the original's footer measures 721px at 1440; the padding below is what gets it there -->
+    <div class="container-page grid gap-14 pb-28 pt-24 lg:grid-cols-[1.2fr_repeat(4,1fr)] lg:gap-10 lg:pt-[10rem]">
       <div>
         <NuxtLink :to="localePath('/')" class="inline-flex text-white" aria-label="tap2link">
           <LogoMark class="h-10" />
@@ -80,7 +81,7 @@ const socials = [
     </div>
 
     <div class="border-t border-white/15">
-      <div class="container-page flex flex-col gap-4 py-7 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
+      <div class="container-page flex flex-col gap-4 py-10 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
         <p>{{ t('footer.copyright', { year }) }}</p>
         <nav class="flex flex-wrap gap-x-6 gap-y-2">
           <NuxtLink :to="localePath('/imprint')" class="hover:text-white">{{ t('footer.imprint') }}</NuxtLink>

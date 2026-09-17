@@ -65,7 +65,7 @@ function toggle(i: number) {
           <h3 class="mt-6 hyphens-auto break-words text-xl font-semibold">{{ rt(entry.item.title) }}</h3>
           <p class="mt-3 hyphens-auto break-words text-base leading-relaxed text-navy">{{ rt(entry.item.text) }}</p>
           <p v-show="open.has(entry.i)" class="mt-3 hyphens-auto break-words text-base leading-relaxed text-navy">{{ rt(entry.item.more) }}</p>
-          <button type="button" class="link-arrow mt-auto w-full justify-between border-t border-dashed border-navy/40 pt-8" :aria-expanded="open.has(entry.i)" @click="toggle(entry.i)">
+          <button type="button" class="link-arrow mt-auto w-full justify-between border-t-2 border-dashed border-navy pt-8" :aria-expanded="open.has(entry.i)" @click="toggle(entry.i)">
             {{ open.has(entry.i) ? t('common.showLess') : t('common.learnMore') }}
             <svg class="h-6 w-6 shrink-0 transition-transform" :class="open.has(entry.i) ? 'rotate-45' : ''" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 4a1 1 0 011 1v4h4a1 1 0 110 2h-4v4a1 1 0 11-2 0v-4H5a1 1 0 110-2h4V5a1 1 0 011-1z" /></svg>
           </button>

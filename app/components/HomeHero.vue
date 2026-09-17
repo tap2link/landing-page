@@ -25,7 +25,7 @@ const bullets = computed(() => tm('home.hero.bullets') as string[])
       <div class="absolute inset-x-0 bottom-0">
         <div class="container-page pb-[0.9vw]">
           <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-            <h2 class="hidden max-w-[7.5em] font-medium text-white text-3xl lg:block">{{ t('home.hero.tagline') }}</h2>
+            <h2 class="hidden max-w-[8.5em] text-5xl font-semibold text-white lg:block">{{ t('home.hero.tagline') }}</h2>
             <p class="max-w-[26em] text-base text-white lg:max-w-[17em]">{{ t('home.hero.text') }}</p>
           </div>
           <!-- the wordmark is sized from this box (container query units), never from the viewport -->
