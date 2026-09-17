@@ -44,9 +44,9 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
       </NuxtLink>
 
       <!-- desktop nav: the bordered pill of links from the old design -->
-      <nav class="hidden items-center gap-1 rounded-full border-2 border-navy bg-white px-3 py-2 font-sans text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] font-medium text-navy lg:flex">
+      <nav class="hidden items-center gap-0.5 rounded-full border-2 border-navy bg-white px-2 py-2 font-sans text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] font-medium text-navy lg:flex">
         <div class="relative" @mouseenter="openDropdown = 'useCases'" @mouseleave="openDropdown = null">
-          <button type="button" class="flex items-center gap-1 rounded-full px-3 py-1.5 hover:bg-grey-100" :aria-expanded="openDropdown === 'useCases'" @click="openDropdown = openDropdown === 'useCases' ? null : 'useCases'">
+          <button type="button" class="flex items-center gap-1 rounded-full px-2 py-1.5 hover:bg-grey-100" :aria-expanded="openDropdown === 'useCases'" @click="openDropdown = openDropdown === 'useCases' ? null : 'useCases'">
             {{ t('nav.useCases') }}
             <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
           </button>
@@ -58,13 +58,13 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
             </div>
           </div>
         </div>
-        <NuxtLink :to="localePath('/agro-solutions')" class="rounded-full px-3 py-1.5 hover:bg-grey-100">{{ t('nav.agro') }}</NuxtLink>
-        <NuxtLink :to="localePath('/for-business')" class="rounded-full px-3 py-1.5 hover:bg-grey-100">{{ t('nav.business') }}</NuxtLink>
-        <NuxtLink :to="localePath('/clubs')" class="rounded-full px-3 py-1.5 hover:bg-grey-100">{{ t('nav.clubs') }}</NuxtLink>
-        <a :href="LINKS.amazonShop" target="_blank" rel="noopener" class="rounded-full px-3 py-1.5 hover:bg-grey-100">{{ t('nav.shop') }}</a>
-        <NuxtLink :to="localePath('/pricing')" class="rounded-full px-3 py-1.5 hover:bg-grey-100">{{ t('nav.pricing') }}</NuxtLink>
+        <NuxtLink :to="localePath('/agro-solutions')" class="rounded-full px-2 py-1.5 hover:bg-grey-100">{{ t('nav.agro') }}</NuxtLink>
+        <NuxtLink :to="localePath('/for-business')" class="rounded-full px-2 py-1.5 hover:bg-grey-100">{{ t('nav.business') }}</NuxtLink>
+        <NuxtLink :to="localePath('/clubs')" class="rounded-full px-2 py-1.5 hover:bg-grey-100">{{ t('nav.clubs') }}</NuxtLink>
+        <a :href="LINKS.amazonShop" target="_blank" rel="noopener" class="rounded-full px-2 py-1.5 hover:bg-grey-100">{{ t('nav.shop') }}</a>
+        <NuxtLink :to="localePath('/pricing')" class="rounded-full px-2 py-1.5 hover:bg-grey-100">{{ t('nav.pricing') }}</NuxtLink>
         <div class="relative" @mouseenter="openDropdown = 'other'" @mouseleave="openDropdown = null">
-          <button type="button" class="flex items-center gap-1 rounded-full px-3 py-1.5 hover:bg-grey-100" :aria-expanded="openDropdown === 'other'" @click="openDropdown = openDropdown === 'other' ? null : 'other'">
+          <button type="button" class="flex items-center gap-1 rounded-full px-2 py-1.5 hover:bg-grey-100" :aria-expanded="openDropdown === 'other'" @click="openDropdown = openDropdown === 'other' ? null : 'other'">
             {{ t('nav.other') }}
             <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
           </button>
@@ -81,7 +81,7 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
             </div>
           </div>
         </div>
-        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="ml-1 inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 uppercase hover:bg-brand-100" :aria-label="t('nav.switchLanguage')">
+        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="ml-0.5 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 uppercase hover:bg-brand-100" :aria-label="t('nav.switchLanguage')">
           <svg v-if="otherLocaleCode === 'de'" class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" y="0" fill="#000" /><rect width="5" height="1" y="1" fill="#d00" /><rect width="5" height="1" y="2" fill="#ffce00" /></svg>
           <svg v-else class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6" /><path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" stroke-width="3" /><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10" /><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6" /></svg>
           {{ otherLocaleCode }}
@@ -94,7 +94,7 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
           <svg v-else class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6" /><path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" stroke-width="3" /><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10" /><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6" /></svg>
           {{ otherLocaleCode }}
         </NuxtLink>
-        <a :href="LINKS.login" target="_blank" rel="noopener" class="btn-dark hidden border-2 border-navy py-3.5 text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] sm:inline-flex">
+        <a :href="LINKS.login" target="_blank" rel="noopener" class="btn-dark hidden border-2 border-navy px-5 py-3.5 text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] sm:inline-flex">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round" /></svg>
           {{ t('nav.login') }}
         </a>
