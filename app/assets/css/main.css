@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 /*
- * Design tokens lifted from the previous Webflow site's CSS (tap2link.shared.*.css):
+ * Design tokens lifted from the previous site's CSS (tap2link.shared.*.css):
  * fonts Inter (headings, UI) + Nunito Sans (body), primary blue #2562ff, deep blue #0050bd,
  * light blue #638eff, navy #051822, ink #1a1b1f, lime accent #aeea04, page #fafafa, grey #f1f1f1,
  * mid grey #5d6c7b.
