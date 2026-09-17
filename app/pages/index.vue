@@ -1,4 +1,8 @@
 <script setup lang="ts">
+// The home page is the only page whose header floats over the hero photo (the original does the
+// same); the layout reads this flag and switches AppHeader into its transparent overlay variant.
+definePageMeta({ headerOverlay: true })
+
 const { t } = useI18n()
 usePageSeo({ title: t('seo.home.title'), description: t('seo.home.description'), fullTitle: true })
 
