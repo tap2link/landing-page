@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { LINKS } from '~/data/links'
 
+withDefaults(defineProps<{
+  /** float transparently over the page's hero photo instead of sitting on a solid bar */
+  overlay?: boolean
+}>(), { overlay: false })
+
 const { t, locale, locales } = useI18n()
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
@@ -29,14 +34,17 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
 </script>
 
 <template>
-  <header class="sticky top-0 z-40 bg-page/90 backdrop-blur">
-    <div class="container-page flex h-[76px] items-center justify-between gap-4">
-      <NuxtLink :to="localePath('/')" class="flex shrink-0 items-center rounded-full border border-navy bg-white px-4 py-2 text-navy" aria-label="tap2link">
-        <LogoMark class="h-5" />
+  <header
+    class="z-40"
+    :class="overlay ? 'fixed inset-x-0 top-0 bg-transparent' : 'sticky top-0 bg-page/90 backdrop-blur'"
+  >
+    <div class="container-page flex items-center justify-between gap-4 py-4 sm:py-5">
+      <NuxtLink :to="localePath('/')" class="flex shrink-0 items-center rounded-full border-2 border-navy bg-white px-6 py-4 text-navy" aria-label="tap2link">
+        <LogoMark class="h-6" />
       </NuxtLink>
 
       <!-- desktop nav: the bordered pill of links from the old design -->
-      <nav class="hidden items-center gap-1 rounded-full border border-navy bg-white px-2 py-1.5 font-sans text-sm font-medium text-navy lg:flex">
+      <nav class="hidden items-center gap-1 rounded-full border-2 border-navy bg-white px-3 py-2 font-sans text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] font-medium text-navy lg:flex">
         <div class="relative" @mouseenter="openDropdown = 'useCases'" @mouseleave="openDropdown = null">
           <button type="button" class="flex items-center gap-1 rounded-full px-3 py-1.5 hover:bg-grey-100" :aria-expanded="openDropdown === 'useCases'" @click="openDropdown = openDropdown === 'useCases' ? null : 'useCases'">
             {{ t('nav.useCases') }}
@@ -73,20 +81,24 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
             </div>
           </div>
         </div>
-        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="rounded-full px-3 py-1.5 uppercase hover:bg-grey-100" :aria-label="typeof otherLocale === 'string' ? otherLocale : otherLocale.name">
+        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="ml-1 inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 uppercase hover:bg-brand-100" :aria-label="t('nav.switchLanguage')">
+          <svg v-if="otherLocaleCode === 'de'" class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" y="0" fill="#000" /><rect width="5" height="1" y="1" fill="#d00" /><rect width="5" height="1" y="2" fill="#ffce00" /></svg>
+          <svg v-else class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6" /><path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" stroke-width="3" /><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10" /><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6" /></svg>
           {{ otherLocaleCode }}
         </NuxtLink>
       </nav>
 
       <div class="flex items-center gap-2">
-        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="rounded-full border border-navy bg-white px-3 py-2 font-sans text-sm font-semibold uppercase text-navy lg:hidden">
+        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-white px-4 py-3 font-sans text-sm font-semibold uppercase text-navy lg:hidden" :aria-label="t('nav.switchLanguage')">
+          <svg v-if="otherLocaleCode === 'de'" class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" y="0" fill="#000" /><rect width="5" height="1" y="1" fill="#d00" /><rect width="5" height="1" y="2" fill="#ffce00" /></svg>
+          <svg v-else class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6" /><path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" stroke-width="3" /><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10" /><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6" /></svg>
           {{ otherLocaleCode }}
         </NuxtLink>
-        <a :href="LINKS.login" target="_blank" rel="noopener" class="btn-dark hidden py-2.5 sm:inline-flex">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round" /></svg>
+        <a :href="LINKS.login" target="_blank" rel="noopener" class="btn-dark hidden border-2 border-navy py-3.5 text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] sm:inline-flex">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round" /></svg>
           {{ t('nav.login') }}
         </a>
-        <button type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy bg-white text-navy lg:hidden" :aria-label="mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')" :aria-expanded="mobileOpen" @click="mobileOpen = !mobileOpen">
+        <button type="button" class="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-navy bg-white text-navy lg:hidden" :aria-label="mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')" :aria-expanded="mobileOpen" @click="mobileOpen = !mobileOpen">
           <svg v-if="!mobileOpen" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
           <svg v-else class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" /></svg>
         </button>

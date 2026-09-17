@@ -155,9 +155,9 @@
     container-type: inline-size;
   }
   .wordmark {
-    font-size: 26.6cqw;
+    font-size: 25.6cqw;
     line-height: 0.8;
-    letter-spacing: -0.017em;
+    letter-spacing: -0.0151em; /* the original's -5px at 331px */
     font-weight: 600;
   }
 }
