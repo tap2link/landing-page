@@ -51,12 +51,13 @@ export default defineNuxtConfig({
       // lang, canonical and hreflang alternates come per locale from useLocaleHead() in app.vue
       titleTemplate: '%s · tap2link',
       link: [
-        // the tap2link mark from the previous (Webflow) site: 32x32 favicon + 256x256 web clip
+        // the tap2link mark from the previous site: 32x32 favicon + 256x256 web clip
         { rel: 'icon', type: 'image/png', href: '/favicon.png', sizes: '32x32' },
         { rel: 'apple-touch-icon', sizes: '256x256', href: '/apple-touch-icon.png' },
-        // Brand font: Inter, the family the original site renders in, self-hosted from
-        // public/fonts (SIL OFL). No runtime third-party font request; the @font-face rules live
-        // in assets/css/main.css. The latin cut carries every page's copy, so it is preloaded.
+        // Brand fonts, same Google Fonts families the previous site loaded: Inter (headings, UI) and
+        // Nunito Sans (body copy). Google Fonts is the only third-party resource on the site.
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
           rel: 'preload',
           as: 'font',
