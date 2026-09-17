@@ -13,7 +13,8 @@
     "login": "Einloggen",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
-    "latestPost": "Neuester Beitrag"
+    "latestPost": "Neuester Beitrag",
+    "switchLanguage": "Zu Englisch wechseln"
   },
   "useCases": {
     "moerschen": "Moerschen",

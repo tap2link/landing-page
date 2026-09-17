@@ -59,8 +59,11 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap'
+          rel: 'preload',
+          as: 'font',
+          type: 'font/woff2',
+          href: '/fonts/inter-latin-var.woff2',
+          crossorigin: 'anonymous'
         }
       ]
     }
