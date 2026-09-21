@@ -12,29 +12,6 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Safety net for app paths typed on the landing host: this site serves land.t2l.ink, the app
-# lives on https://t2l.ink. Deliberately no force = true and no catch-all, so the site's own
-# files and its 404 page always win; a future landing route of the same name takes precedence.
-# Netlify forwards the incoming query string because none of these targets carries one.
-# Not redirected on purpose: /api/*, /auth-api/*, /contact-api/* - nobody types those, and a 301
-# on a non-GET call breaks the call instead of rescuing it.
-
-[[redirects]]
-  from = "/login"
-  to = "https://t2l.ink/login"
-  status = 301
-
-[[redirects]]
-  from = "/register"
-  to = "https://t2l.ink/register"
-  status = 301
-
-[[redirects]]
-  from = "/welcome"
-  to = "https://t2l.ink/welcome"
-  status = 301
-
-[[redirects]]
-  from = "/app/*"
-  to = "https://t2l.ink/app/:splat"
-  status = 301
+# No [[redirects]] here on purpose: the four 301s for app paths typed on the landing host live in
+# public/_redirects, because Netlify reads _redirects first and `nuxt generate` writes a catch-all
+# into it, so a redirect declared here would never be reached. See that file.
