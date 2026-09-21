@@ -10,6 +10,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "check:links": "node scripts/check-links.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
