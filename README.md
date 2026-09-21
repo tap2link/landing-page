@@ -1,9 +1,26 @@
 # tap2link marketing site
 
-Self-hosted replacement for the tap2link marketing site (https://www.t2l.ink/), previously built
-on Webflow. Nuxt 4 static site (`nuxt generate`), Tailwind CSS 4, `@nuxtjs/i18n` (EN default, DE
-under `/de/...`), `@nuxtjs/sitemap`, Netlify Forms for the contact form. No third-party scripts;
-Google Fonts (Inter + Nunito Sans) is the only external resource.
+Self-hosted replacement for the tap2link marketing site, previously built on Webflow. Nuxt 4 static
+site (`nuxt generate`), Tailwind CSS 4, `@nuxtjs/i18n` (EN default, DE under `/de/...`),
+`@nuxtjs/sitemap`, Netlify Forms for the contact form. No third-party scripts; Google Fonts
+(Inter + Nunito Sans) is the only external resource.
+
+## Hosts
+
+The marketing site and the app live on two different hosts:
+
+| Host | What | Declared in |
+| --- | --- | --- |
+| `https://land.t2l.ink` | this site (Netlify) | `SITE_URL` in `nuxt.config.ts` - feeds the sitemap, the canonical/hreflang tags and `og:url`; repeated as a literal in `public/robots.txt` (a static file) and as `usePageSeo`'s fallback |
+| `https://t2l.ink` | the app: login, profiles, tag links | `APP_BASE_URL` in `app/data/links.ts` |
+
+Every link into the app must be **absolute** - a relative `/login` or `/welcome` would stay on the
+landing host and 404. Build them with `appUrl('/welcome')` from `app/data/links.ts`; never write the
+host again anywhere else. In-site links keep using `localePath()`/`<NuxtLink>` and stay relative.
+`netlify.toml` carries four 301s (`/login`, `/register`, `/welcome`, `/app/*`) as a safety net for
+app paths typed on the landing host; they are not a catch-all, so this site's own files and its 404
+page keep precedence. `www.t2l.ink` and the root of `t2l.ink` redirect to `land.t2l.ink` on the
+load balancer, outside this repo.
 
 Built 2026-09-06 from an extraction of all 21 live pages (EN) and their Weglot-served German
 versions. The structure mirrors `C:\code\machinemaster\retailer-landing-page`.
@@ -14,9 +31,23 @@ versions. The structure mirrors `C:\code\machinemaster\retailer-landing-page`.
 npm install          # Node 24 (see .nvmrc); package-lock.json pins a working resolution -
                      # a fresh resolve without the lockfile currently fails on a vite peer conflict
 npm run dev          # http://localhost:3000
-npm run generate     # static output in .output/public (Netlify publishes `dist`, see netlify.toml)
+npm run generate     # static output in .output/public (`dist` is a symlink to it, which is what
+                     # Netlify publishes, see netlify.toml)
 npm run preview
+npm run check:links  # after `npm run generate`: asserts the built site is correct on its own host
 ```
+
+`npm run check:links` (`scripts/check-links.mjs`, zero dependencies) walks the generated HTML and
+fails if any `href`/`action` points at a relative app path, if a canonical / `og:url` / hreflang URL
+is off `land.t2l.ink`, if `www.t2l.ink` survives anywhere, if a canonical does not match its own
+route, if the set of generated pages changed, or if `robots.txt` and the emitted sitemap disagree.
+It reads `.output/public` (or `dist`, or a directory given as the first argument) and prints one
+PASS/FAIL line per check.
+
+**Worktrees:** the build fails if `node_modules` is a symlink into another checkout - Nuxt's build
+directory lives in `node_modules/.cache/nuxt`, and prerendering then dies with *"Only URLs with a
+scheme in: file, data, and node are supported ... Received protocol 'c:'"*. Give each worktree its
+own `node_modules` (`npm ci`).
 
 Branches: `main` is production (Netlify), `dev` is the base for work; one `fix/` or `feature/`
 branch per task, merged on GitHub.
@@ -24,8 +55,11 @@ branch per task, merged on GitHub.
 ## Structure
 
 ```
-nuxt.config.ts            site URL, i18n (en default / de prefixed), sitemap, titleTemplate, icons, fonts
-netlify.toml              build `npm run generate`, publish `dist`, Node 24, security headers
+nuxt.config.ts            SITE_URL (this site's own host), i18n (en default / de prefixed), sitemap,
+                          titleTemplate, icons, fonts
+netlify.toml              build `npm run generate`, publish `dist`, Node 24, security headers,
+                          the four 301s for app paths typed on the landing host
+scripts/check-links.mjs   `npm run check:links` - host/route checks on the generated HTML
 app/
   app.vue                 html lang + canonical/hreflang per locale (useLocaleHead)
   assets/css/main.css     Tailwind 4 @theme tokens (brand blues, navy, ink, lime, page, greys; Inter + Nunito Sans),
@@ -33,7 +67,8 @@ app/
   assets/logo.svg         the tap2link wordmark (currentColor), inlined by <LogoMark>
   composables/usePageSeo.ts   title / description / OG / Twitter / canonical per page
   composables/useContent.ts   markdown loader for content/** (per-locale files, EN fallback, img width/height + lazy)
-  data/links.ts           every external URL (login, stores, Amazon shop, demo calendar, socials)
+  data/links.ts           every external URL (login, stores, Amazon shop, demo calendar, socials);
+                          APP_BASE_URL + appUrl() build every link into the app
   data/image-sizes.json   intrinsic sizes of public/images/** (generated; used for width/height attrs)
   components/             AppHeader, AppFooter, HomeHero, AppStoreCards, PartnerLogos, FeatureCards,
                           HomeUseCases, ShopCards, CtaBanner, PricingTable, DesignWorkshop, FaqAccordion,

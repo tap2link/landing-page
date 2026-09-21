@@ -16,7 +16,8 @@ export function usePageSeo(seo: PageSeo) {
   const route = useRoute()
   const { locale } = useI18n()
   const config = useRuntimeConfig()
-  const siteUrl = (config.public.siteUrl as string) || 'https://www.t2l.ink'
+  // fallback only: the configured value is SITE_URL in nuxt.config.ts, keep both on the same host
+  const siteUrl = (config.public.siteUrl as string) || 'https://land.t2l.ink'
   const path = route.path.endsWith('/') && route.path !== '/' ? route.path.slice(0, -1) : route.path
   const url = `${siteUrl}${path}`
   const image = seo.image ? (seo.image.startsWith('http') ? seo.image : `${siteUrl}${seo.image}`) : `${siteUrl}/images/og-image.jpg`

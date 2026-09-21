@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow:
 
-Sitemap: https://www.t2l.ink/sitemap_index.xml
+Sitemap: https://land.t2l.ink/sitemap_index.xml
