@@ -1,0 +1,22 @@
+# Safety net for app paths typed on the landing host: this site serves land.t2l.ink, the app
+# lives on https://t2l.ink.
+#
+# These four 301s must live in THIS file and not in netlify.toml. `nuxt generate` writes its own
+# _redirects into the publish directory, ending in a `/* /404.html 404` catch-all, and Netlify
+# evaluates _redirects before netlify.toml and takes the FIRST match - so the catch-all answers
+# before a netlify.toml rule is ever consulted, and such a rule can never fire. Nitro finds this
+# file, keeps it, and appends its own rules after it, so our four rules sit first and everything
+# else still falls through to the site's own files and its 404 page.
+#
+# Never add a catch-all (`/*` or `/**`) here: Nitro skips its own 404 fallback when this file
+# already carries one, and a catch-all would swallow the site's own routes. `npm run check:links`
+# asserts both (criteria 11 and 12).
+#
+# Netlify forwards the incoming query string because none of these targets carries one.
+# Not redirected on purpose: /api/*, /auth-api/*, /contact-api/* - nobody types those, and a 301
+# on a non-GET call breaks the call instead of rescuing it.
+
+/login     https://t2l.ink/login       301
+/register  https://t2l.ink/register    301
+/welcome   https://t2l.ink/welcome     301
+/app/*     https://t2l.ink/app/:splat  301
