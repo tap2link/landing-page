@@ -17,10 +17,15 @@ The marketing site and the app live on two different hosts:
 Every link into the app must be **absolute** - a relative `/login` or `/welcome` would stay on the
 landing host and 404. Build them with `appUrl('/welcome')` from `app/data/links.ts`; never write the
 host again anywhere else. In-site links keep using `localePath()`/`<NuxtLink>` and stay relative.
-`netlify.toml` carries four 301s (`/login`, `/register`, `/welcome`, `/app/*`) as a safety net for
-app paths typed on the landing host; they are not a catch-all, so this site's own files and its 404
-page keep precedence. `www.t2l.ink` and the root of `t2l.ink` redirect to `land.t2l.ink` on the
-load balancer, outside this repo.
+`public/_redirects` carries four 301s (`/login`, `/register`, `/welcome`, `/app/*`) as a safety net
+for app paths typed on the landing host; they are not a catch-all, so this site's own files and its
+404 page keep precedence. They cannot live in `netlify.toml`: `nuxt generate` writes its own
+`_redirects` into the publish directory ending in a `/* /404.html 404` catch-all, and Netlify reads
+`_redirects` before `netlify.toml` and takes the first match - so a redirect declared in
+`netlify.toml` is never reached. Nitro keeps a hand-written `public/_redirects` and appends its
+rules after it, which is why the four rules sit first; never add a `/*` line to that file.
+`www.t2l.ink` and the root of `t2l.ink` redirect to `land.t2l.ink` on the load balancer, outside
+this repo.
 
 Built 2026-09-06 from an extraction of all 21 live pages (EN) and their Weglot-served German
 versions. The structure mirrors `C:\code\machinemaster\retailer-landing-page`.
@@ -41,6 +46,9 @@ npm run check:links  # after `npm run generate`: asserts the built site is corre
 fails if any `href`/`action` points at a relative app path, if a canonical / `og:url` / hreflang URL
 is off `land.t2l.ink`, if `www.t2l.ink` survives anywhere, if a canonical does not match its own
 route, if the set of generated pages changed, or if `robots.txt` and the emitted sitemap disagree.
+It also fails if the generated `_redirects` no longer carries the four app-path 301s in their
+required form or lets a catch-all precede them, and if the repo declares redirects twice
+(a `/*` line in `public/_redirects`, or a `[[redirects]]` table in `netlify.toml`).
 It reads `.output/public` (or `dist`, or a directory given as the first argument) and prints one
 PASS/FAIL line per check.
 
@@ -57,9 +65,9 @@ branch per task, merged on GitHub.
 ```
 nuxt.config.ts            SITE_URL (this site's own host), i18n (en default / de prefixed), sitemap,
                           titleTemplate, icons, fonts
-netlify.toml              build `npm run generate`, publish `dist`, Node 24, security headers,
-                          the four 301s for app paths typed on the landing host
-scripts/check-links.mjs   `npm run check:links` - host/route checks on the generated HTML
+netlify.toml              build `npm run generate`, publish `dist`, Node 24, security headers
+                          (no redirects - see public/_redirects)
+scripts/check-links.mjs   `npm run check:links` - host/route/redirect checks on the generated HTML
 app/
   app.vue                 html lang + canonical/hreflang per locale (useLocaleHead)
   assets/css/main.css     Tailwind 4 @theme tokens (brand blues, navy, ink, lime, page, greys; Inter + Nunito Sans),
@@ -83,6 +91,8 @@ public/
   images/**               all assets copied from the Webflow CDN with clean names (hero/, icons/, partners/,
                           badges/, shop/, pricing/, agro/, business/, clubs/, use-cases/, blog/, og-image.jpg)
   favicon.png, apple-touch-icon.png, robots.txt
+  _redirects              the four 301s for app paths typed on the landing host (Netlify syntax,
+                          shipped verbatim; never add a `/*` catch-all here)
 ```
 
 ### URL map (identical to the live site)
