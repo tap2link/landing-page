@@ -5,8 +5,10 @@
 //
 // It asserts that the site is correct on its own host: no link into the app is left relative,
 // every statement of the site's own URL names the landing host, the route set is unchanged, and
-// robots.txt/the sitemap agree with all of that. Every check runs before the script exits, so one
-// run reports every problem; the exit code is non-zero if any check failed.
+// robots.txt/the sitemap agree with all of that. It also asserts the four safety redirects for
+// app paths typed on this host are in the generated _redirects, above any catch-all, and that the
+// repo declares them in one place only. Every check runs before the script exits, so one run
+// reports every problem; the exit code is non-zero if any check failed.
 //
 // Plain Node (>= 20), no dependency outside the standard library. The two expected origins are
 // this script's own literals on purpose: a checker that imports SITE_URL / APP_BASE_URL from the
@@ -356,6 +358,96 @@ const robotsSitemapUrls = []
     } else {
       fail(10, `${offenders.length} sitemap problem(s)`, offenders)
     }
+  }
+}
+
+// ------------------------------------------------- criteria 11 + 12: the app-path safety redirects
+
+/** the four safety redirects, in the order public/_redirects declares them */
+const EXPECTED_REDIRECTS = [
+  { from: '/login', to: `${APP_ORIGIN}/login`, status: '301' },
+  { from: '/register', to: `${APP_ORIGIN}/register`, status: '301' },
+  { from: '/welcome', to: `${APP_ORIGIN}/welcome`, status: '301' },
+  { from: '/app/*', to: `${APP_ORIGIN}/app/:splat`, status: '301' }
+]
+
+/** a rule that answers every remaining path; Nitro appends one, we must never declare one */
+const isCatchAll = (rule) => rule.from === '/*' || rule.from === '/**'
+
+/** Netlify _redirects syntax: one rule per line, "from to [status]", # comments and blanks ignored */
+function parseRedirects(source) {
+  return source
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line !== '' && !line.startsWith('#'))
+    .map((line) => {
+      const [from, to, status] = line.split(/\s+/)
+      return { from, to, status, line }
+    })
+}
+
+{
+  const problems = []
+  const generated = join(outputDir, '_redirects')
+  if (!existsSync(generated)) {
+    problems.push(`${generated} does not exist - the build emitted no _redirects file`)
+  } else {
+    const rules = parseRedirects(readFileSync(generated, 'utf8'))
+    const positions = []
+    for (const expected of EXPECTED_REDIRECTS) {
+      const index = rules.findIndex((rule) => rule.from === expected.from)
+      if (index === -1) {
+        problems.push(`no rule for "${expected.from}"`)
+        continue
+      }
+      positions.push({ from: expected.from, index })
+      const rule = rules[index]
+      if (rule.to !== expected.to || rule.status !== expected.status) {
+        problems.push(`"${rule.line}" - expected "${expected.from} ${expected.to} ${expected.status}"`)
+      }
+    }
+    // a catch-all above any of the four would answer first and the redirect would never fire -
+    // which is exactly the bug that moved these rules out of netlify.toml
+    const firstCatchAll = rules.findIndex(isCatchAll)
+    if (firstCatchAll !== -1) {
+      for (const { from, index } of positions) {
+        if (index > firstCatchAll) {
+          problems.push(`"${from}" comes after the catch-all "${rules[firstCatchAll].line}" and can never fire`)
+        }
+      }
+    }
+    const order = positions.map((entry) => entry.index)
+    if (order.some((index, i) => i > 0 && index < order[i - 1])) {
+      problems.push(`the four rules are out of order: ${positions.map((e) => e.from).join(' ')}`)
+    }
+    if (problems.length === 0) {
+      const where = firstCatchAll === -1 ? 'no catch-all in this output' : `above "${rules[firstCatchAll].line}"`
+      pass(11, `${toPosix(generated)} declares the ${EXPECTED_REDIRECTS.length} app-path 301s to ${APP_ORIGIN} (${where})`)
+    }
+  }
+  if (problems.length > 0) fail(11, `the app-path safety redirects are wrong in the generated _redirects`, problems)
+}
+
+{
+  const problems = []
+  const repoRedirects = join(repoRoot, 'public', '_redirects')
+  if (!existsSync(repoRedirects)) {
+    problems.push('public/_redirects does not exist - the four app-path 301s have no home')
+  } else {
+    for (const rule of parseRedirects(readFileSync(repoRedirects, 'utf8')).filter(isCatchAll)) {
+      problems.push(`public/_redirects declares a catch-all: "${rule.line}" - it would suppress the site's own 404 page`)
+    }
+  }
+  const netlifyToml = join(repoRoot, 'netlify.toml')
+  if (!existsSync(netlifyToml)) {
+    problems.push('netlify.toml does not exist')
+  } else if (/^\s*\[\[redirects\]\]/m.test(readFileSync(netlifyToml, 'utf8'))) {
+    problems.push('netlify.toml declares a [[redirects]] table - it can never fire, and two mechanisms disagree')
+  }
+  if (problems.length === 0) {
+    pass(12, 'one redirect mechanism: public/_redirects carries the rules and no catch-all, netlify.toml declares none')
+  } else {
+    fail(12, 'the repo declares its redirects in the wrong place', problems)
   }
 }
 
