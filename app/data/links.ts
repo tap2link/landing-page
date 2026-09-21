@@ -1,9 +1,22 @@
 // External links taken verbatim from the previous live site's HTML (2026-09-06).
+
+/**
+ * The app's host. The marketing site is served from its own host (land.t2l.ink, SITE_URL in
+ * nuxt.config.ts), so every link into the app must be absolute - a relative /login or /welcome
+ * would stay on the landing host and 404. Declared once here; change the host in this one place.
+ */
+export const APP_BASE_URL = 'https://t2l.ink'
+
+/** Absolute URL of an app path, e.g. appUrl('/welcome') -> https://t2l.ink/welcome */
+export function appUrl(path: string): string {
+  return `${APP_BASE_URL}${path.startsWith('/') ? path : `/${path}`}`
+}
+
 export const LINKS = {
   /** header "Log in" button - the live header links to /welcome, not /login */
-  login: 'https://t2l.ink/welcome',
+  login: appUrl('/welcome'),
   /** "Get started" buttons on the pricing page */
-  getStarted: 'https://t2l.ink/welcome',
+  getStarted: appUrl('/welcome'),
   appStore: 'https://apps.apple.com/pl/app/tap2link/id1621577211',
   googlePlay: 'https://play.google.com/store/apps/details?id=ink.t2l.tap2link&hl=en_AU&gl=US',
   /** desktop nav "Shop" on the live site points at this Amazon listing (the shop.t2l.ink domain is dead) */

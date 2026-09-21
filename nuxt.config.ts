@@ -1,5 +1,11 @@
 import tailwindcss from '@tailwindcss/vite'
 
+// The marketing site's own public host. It lives on its own host, separate from the app
+// (https://t2l.ink, see APP_BASE_URL in app/data/links.ts). Declared once here and used for every
+// place that states the site's URL: the sitemap, the canonical/hreflang tags and og:url.
+// public/robots.txt carries the same host as a literal - it is a static file and cannot import it.
+const SITE_URL = 'https://land.t2l.ink'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -12,13 +18,13 @@ export default defineNuxtConfig({
   // Public site identity: used by @nuxtjs/sitemap (absolute URLs), by usePageSeo (canonical/OG
   // URLs) and by @nuxtjs/i18n (hreflang alternates via i18n.baseUrl below).
   site: {
-    url: 'https://www.t2l.ink',
+    url: SITE_URL,
     name: 'tap2link'
   },
 
   runtimeConfig: {
     public: {
-      siteUrl: 'https://www.t2l.ink'
+      siteUrl: SITE_URL
     }
   },
 
@@ -43,7 +49,7 @@ export default defineNuxtConfig({
     langDir: 'locales/',
     lazy: true,
     detectBrowserLanguage: false,
-    baseUrl: 'https://www.t2l.ink'
+    baseUrl: SITE_URL
   },
 
   app: {
