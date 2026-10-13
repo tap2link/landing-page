@@ -22,9 +22,17 @@ const isColorMode = (value: unknown): value is ColorMode => value === 'light' ||
 
 function readCookie(): ColorMode | null {
   if (typeof document === 'undefined') return null
-  const match = document.cookie.match(/(?:^|;\s*)t2l-color-mode=([^;]*)/)
-  const value = match ? decodeURIComponent(match[1]!) : null
-  return isColorMode(value) ? value : null
+  // Mirrors the pre-paint script's own guard (nuxt.config.ts): document.cookie access can throw
+  // in a handful of restrictive contexts, and decodeURIComponent throws on a malformed percent
+  // escape - either failure falls back to null (system preference) instead of interrupting
+  // hydration/the composable's setup.
+  try {
+    const match = document.cookie.match(/(?:^|;\s*)t2l-color-mode=([^;]*)/)
+    const value = match ? decodeURIComponent(match[1]!) : null
+    return isColorMode(value) ? value : null
+  } catch {
+    return null
+  }
 }
 
 function cookieDomain(): string | undefined {
