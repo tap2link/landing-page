@@ -14,7 +14,9 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "latestPost": "Latest post",
-    "switchLanguage": "Switch to German"
+    "switchLanguage": "Switch to German",
+    "switchToLightMode": "Switch to light mode",
+    "switchToDarkMode": "Switch to dark mode"
   },
   "useCases": {
     "moerschen": "Moerschen",

@@ -1,0 +1,82 @@
+// Light/dark switch, shared across every `*.t2l.ink` host (T2L-6-D10): system preference by
+// default, a persisted override once the visitor toggles it. The cookie name, value format and
+// `.t2l.ink` domain mirror `tap2link-website`'s own `composables/useColorMode.ts` (T2L-6-S1,
+// branch `feature/design-token-base-theme-system-from-harbor-light`) byte for byte, so a choice
+// made on this site carries over to `t2l.ink`/`land.t2l.ink` and back, and vice versa.
+//
+// This site is fully prerendered (T2L-6-D12): there is no per-request server to read the cookie
+// from, so the mode is resolved entirely in the browser. The attribute this composable sets on
+// `<html>` (`data-color-mode`) is the same selector `tap2link-website`'s own generated
+// `design-tokens/output/tokens.css` already uses for a consumer without Vuetify - this repo is
+// exactly that consumer (see `app/assets/css/main.css`). A synchronous inline script
+// (`nuxt.config.ts`) sets the same attribute before first paint so a returning visitor's override
+// never flashes the other mode; this composable keeps it in sync afterwards and lets
+// `AppHeader.vue`'s toggle change it.
+
+export const COLOR_MODE_COOKIE = 't2l-color-mode'
+export const COLOR_MODE_ATTR = 'data-color-mode'
+
+export type ColorMode = 'light' | 'dark'
+
+const isColorMode = (value: unknown): value is ColorMode => value === 'light' || value === 'dark'
+
+function readCookie(): ColorMode | null {
+  if (typeof document === 'undefined') return null
+  const match = document.cookie.match(/(?:^|;\s*)t2l-color-mode=([^;]*)/)
+  const value = match ? decodeURIComponent(match[1]!) : null
+  return isColorMode(value) ? value : null
+}
+
+function cookieDomain(): string | undefined {
+  if (typeof window === 'undefined') return undefined
+  const { hostname } = window.location
+  return hostname === 't2l.ink' || hostname.endsWith('.t2l.ink') ? '.t2l.ink' : undefined
+}
+
+function writeCookie(mode: ColorMode) {
+  if (typeof document === 'undefined') return
+  const domain = cookieDomain()
+  const maxAge = 60 * 60 * 24 * 365
+  document.cookie = `${COLOR_MODE_COOKIE}=${mode}; Max-Age=${maxAge}; Path=/; SameSite=Lax${domain ? `; Domain=${domain}` : ''}`
+}
+
+function systemPrefersDark(): boolean {
+  return typeof window !== 'undefined' && !!window.matchMedia
+    && window.matchMedia('(prefers-color-scheme: dark)').matches
+}
+
+function applyAttr(mode: ColorMode) {
+  if (typeof document === 'undefined') return
+  document.documentElement.setAttribute(COLOR_MODE_ATTR, mode)
+}
+
+export const useColorMode = () => {
+  // useState, not a plain module-level ref: shared across every component instance on the page
+  // without re-reading the cookie/matchMedia on each call.
+  const stored = useState<ColorMode | null>('t2l-color-mode-stored', () => null)
+  const systemDark = useState<boolean>('t2l-color-mode-system-dark', () => false)
+
+  const colorMode = computed<ColorMode>(() => stored.value ?? (systemDark.value ? 'dark' : 'light'))
+  const hasExplicitOverride = computed(() => isColorMode(stored.value))
+
+  if (import.meta.client) {
+    stored.value = readCookie()
+    systemDark.value = systemPrefersDark()
+    applyAttr(colorMode.value)
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+      systemDark.value = event.matches
+    })
+
+    watch(colorMode, (mode) => applyAttr(mode))
+  }
+
+  const setColorMode = (mode: ColorMode) => {
+    stored.value = mode
+    writeCookie(mode)
+  }
+
+  const toggleColorMode = () => setColorMode(colorMode.value === 'dark' ? 'light' : 'dark')
+
+  return { colorMode, hasExplicitOverride, setColorMode, toggleColorMode }
+}

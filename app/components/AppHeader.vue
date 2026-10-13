@@ -9,6 +9,7 @@ withDefaults(defineProps<{
 const { t, locale, locales } = useI18n()
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
+const { colorMode, toggleColorMode } = useColorMode()
 
 const mobileOpen = ref(false)
 const openDropdown = ref<'useCases' | 'other' | null>(null)
@@ -39,20 +40,20 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
     :class="overlay ? 'fixed inset-x-0 top-0 bg-transparent' : 'sticky top-0 bg-page/90 backdrop-blur'"
   >
     <div class="container-page flex items-center justify-between gap-4 py-4 sm:py-5">
-      <NuxtLink :to="localePath('/')" class="flex shrink-0 items-center rounded-full border-2 border-navy bg-white px-6 py-4 text-navy" aria-label="tap2link">
+      <NuxtLink :to="localePath('/')" class="flex shrink-0 items-center rounded-full border-2 border-heading bg-page px-6 py-4 text-heading" aria-label="tap2link">
         <LogoMark class="h-6" />
       </NuxtLink>
 
       <!-- desktop nav: the bordered pill of links from the old design -->
-      <nav class="hidden items-center gap-0.5 rounded-full border-2 border-navy bg-white px-2 py-2 font-sans text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] font-medium text-navy lg:flex">
+      <nav class="hidden items-center gap-0.5 rounded-full border-2 border-heading bg-page px-2 py-2 font-sans text-[clamp(0.875rem,0.26rem+0.96vw,1.125rem)] font-medium text-heading lg:flex">
         <div class="relative" @mouseenter="openDropdown = 'useCases'" @mouseleave="openDropdown = null">
           <button type="button" class="flex items-center gap-1 rounded-full px-2 py-1.5 hover:bg-grey-100" :aria-expanded="openDropdown === 'useCases'" @click="openDropdown = openDropdown === 'useCases' ? null : 'useCases'">
             {{ t('nav.useCases') }}
             <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
           </button>
           <div v-show="openDropdown === 'useCases'" class="absolute left-0 top-full pt-3">
-            <div class="w-56 rounded-2xl border border-navy bg-white p-2 shadow-lg">
-              <NuxtLink v-for="uc in useCaseLinks" :key="uc.slug" :to="localePath(`/use-cases/${uc.slug}`)" class="block rounded-xl px-3 py-2 hover:bg-brand-50 hover:text-brand-700">
+            <div class="w-56 rounded-2xl border border-heading bg-page p-2 shadow-lg">
+              <NuxtLink v-for="uc in useCaseLinks" :key="uc.slug" :to="localePath(`/use-cases/${uc.slug}`)" class="block rounded-xl px-3 py-2 hover:bg-grey-100">
                 {{ t(`useCases.${uc.key}`) }}
               </NuxtLink>
             </div>
@@ -69,8 +70,8 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
             <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
           </button>
           <div v-show="openDropdown === 'other'" class="absolute right-0 top-full pt-3">
-            <div class="w-72 rounded-2xl border border-navy bg-white p-2 shadow-lg">
-              <NuxtLink v-for="o in otherLinks" :key="o.path" :to="localePath(o.path)" class="block rounded-xl px-3 py-2 hover:bg-brand-50 hover:text-brand-700">
+            <div class="w-72 rounded-2xl border border-heading bg-page p-2 shadow-lg">
+              <NuxtLink v-for="o in otherLinks" :key="o.path" :to="localePath(o.path)" class="block rounded-xl px-3 py-2 hover:bg-grey-100">
                 {{ t(`nav.${o.key}`) }}
               </NuxtLink>
               <div class="mt-2 rounded-xl bg-grey-100 p-3">
@@ -81,7 +82,8 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
             </div>
           </div>
         </div>
-        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="ml-0.5 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 uppercase hover:bg-brand-100" :aria-label="t('nav.switchLanguage')">
+        <!-- self-contained light accent pill (flag + code), deliberately not repointed - see HomeUseCases/DesignWorkshop note in the implementation report -->
+        <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="ml-0.5 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 uppercase text-navy hover:bg-brand-100" :aria-label="t('nav.switchLanguage')">
           <svg v-if="otherLocaleCode === 'de'" class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" y="0" fill="#000" /><rect width="5" height="1" y="1" fill="#d00" /><rect width="5" height="1" y="2" fill="#ffce00" /></svg>
           <svg v-else class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6" /><path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" stroke-width="3" /><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10" /><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6" /></svg>
           {{ otherLocaleCode }}
@@ -89,6 +91,16 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
       </nav>
 
       <div class="flex items-center gap-2">
+        <button
+          type="button"
+          class="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-heading bg-page text-heading"
+          :aria-label="colorMode === 'dark' ? t('nav.switchToLightMode') : t('nav.switchToDarkMode')"
+          @click="toggleColorMode"
+        >
+          <svg v-if="colorMode === 'dark'" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path stroke-linecap="round" d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" /></svg>
+          <svg v-else class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 119.5 4a7 7 0 1010.5 10.5z" /></svg>
+        </button>
+        <!-- self-contained light accent pill, deliberately not repointed (see above) -->
         <NuxtLink v-if="otherLocale" :to="switchLocalePath(otherLocaleCode)" class="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-white px-4 py-3 font-sans text-sm font-semibold uppercase text-navy lg:hidden" :aria-label="t('nav.switchLanguage')">
           <svg v-if="otherLocaleCode === 'de'" class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 5 3" aria-hidden="true"><rect width="5" height="1" y="0" fill="#000" /><rect width="5" height="1" y="1" fill="#d00" /><rect width="5" height="1" y="2" fill="#ffce00" /></svg>
           <svg v-else class="h-4 w-6 shrink-0 rounded-[2px]" viewBox="0 0 60 30" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0l60 30M60 0L0 30" stroke="#fff" stroke-width="6" /><path d="M0 0l60 30M60 0L0 30" stroke="#c8102e" stroke-width="3" /><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10" /><path d="M30 0v30M0 15h60" stroke="#c8102e" stroke-width="6" /></svg>
@@ -98,7 +110,7 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round" /></svg>
           {{ t('nav.login') }}
         </a>
-        <button type="button" class="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-navy bg-white text-navy lg:hidden" :aria-label="mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')" :aria-expanded="mobileOpen" @click="mobileOpen = !mobileOpen">
+        <button type="button" class="inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-heading bg-page text-heading lg:hidden" :aria-label="mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')" :aria-expanded="mobileOpen" @click="mobileOpen = !mobileOpen">
           <svg v-if="!mobileOpen" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
           <svg v-else class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
@@ -106,17 +118,17 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
     </div>
 
     <!-- mobile menu -->
-    <div v-if="mobileOpen" class="border-t border-navy/10 bg-page px-5 pb-6 pt-2 lg:hidden">
-      <nav class="flex flex-col font-sans text-base font-medium text-navy">
+    <div v-if="mobileOpen" class="border-t border-heading/10 bg-page px-5 pb-6 pt-2 lg:hidden">
+      <nav class="flex flex-col font-sans text-base font-medium text-heading">
         <p class="pt-3 text-xs font-semibold uppercase tracking-wider text-grey-500">{{ t('nav.useCases') }}</p>
         <NuxtLink v-for="uc in useCaseLinks" :key="uc.slug" :to="localePath(`/use-cases/${uc.slug}`)" class="py-2">{{ t(`useCases.${uc.key}`) }}</NuxtLink>
-        <hr class="my-2 border-navy/10" />
+        <hr class="my-2 border-heading/10" />
         <NuxtLink :to="localePath('/agro-solutions')" class="py-2">{{ t('nav.agro') }}</NuxtLink>
         <NuxtLink :to="localePath('/for-business')" class="py-2">{{ t('nav.business') }}</NuxtLink>
         <NuxtLink :to="localePath('/clubs')" class="py-2">{{ t('nav.clubs') }}</NuxtLink>
         <a :href="LINKS.amazonShop" target="_blank" rel="noopener" class="py-2">{{ t('nav.shop') }}</a>
         <NuxtLink :to="localePath('/pricing')" class="py-2">{{ t('nav.pricing') }}</NuxtLink>
-        <hr class="my-2 border-navy/10" />
+        <hr class="my-2 border-heading/10" />
         <p class="pt-1 text-xs font-semibold uppercase tracking-wider text-grey-500">{{ t('nav.other') }}</p>
         <NuxtLink v-for="o in otherLinks" :key="o.path" :to="localePath(o.path)" class="py-2">{{ t(`nav.${o.key}`) }}</NuxtLink>
         <a :href="LINKS.login" target="_blank" rel="noopener" class="btn-dark mt-4 sm:hidden">{{ t('nav.login') }}</a>

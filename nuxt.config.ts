@@ -56,6 +56,16 @@ export default defineNuxtConfig({
     head: {
       // lang, canonical and hreflang alternates come per locale from useLocaleHead() in app.vue
       titleTemplate: '%s · tap2link',
+      script: [
+        {
+          key: 'color-mode-init',
+          // Runs synchronously before first paint (no `type`/`async`/`defer`), so a returning
+          // visitor's `t2l-color-mode` cookie override never flashes the other mode - the site is
+          // fully prerendered (T2L-6-D12), so there is no per-request server to vary the HTML
+          // itself. Mirrors `useColorMode.ts`'s own cookie name/attribute exactly.
+          innerHTML: `(function(){try{var m=document.cookie.match(/(?:^|;\\s*)t2l-color-mode=([^;]*)/);var c=m?decodeURIComponent(m[1]):null;var mode=(c==='light'||c==='dark')?c:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-color-mode',mode);}catch(e){}})();`
+        }
+      ],
       link: [
         // the tap2link mark from the previous site: 32x32 favicon + 256x256 web clip
         { rel: 'icon', type: 'image/png', href: '/favicon.png', sizes: '32x32' },
