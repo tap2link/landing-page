@@ -53,7 +53,7 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
           </button>
           <div v-show="openDropdown === 'useCases'" class="absolute left-0 top-full pt-3">
             <div class="w-56 rounded-2xl border border-heading bg-page p-2 shadow-lg">
-              <NuxtLink v-for="uc in useCaseLinks" :key="uc.slug" :to="localePath(`/use-cases/${uc.slug}`)" class="block rounded-xl px-3 py-2 hover:bg-grey-100">
+              <NuxtLink v-for="uc in useCaseLinks" :key="uc.slug" :to="localePath(`/use-cases/${uc.slug}`)" class="block rounded-xl px-3 py-2 hover:bg-brand-50 hover:text-brand-700">
                 {{ t(`useCases.${uc.key}`) }}
               </NuxtLink>
             </div>
@@ -71,7 +71,7 @@ watch(() => route.fullPath, () => { mobileOpen.value = false; openDropdown.value
           </button>
           <div v-show="openDropdown === 'other'" class="absolute right-0 top-full pt-3">
             <div class="w-72 rounded-2xl border border-heading bg-page p-2 shadow-lg">
-              <NuxtLink v-for="o in otherLinks" :key="o.path" :to="localePath(o.path)" class="block rounded-xl px-3 py-2 hover:bg-grey-100">
+              <NuxtLink v-for="o in otherLinks" :key="o.path" :to="localePath(o.path)" class="block rounded-xl px-3 py-2 hover:bg-brand-50 hover:text-brand-700">
                 {{ t(`nav.${o.key}`) }}
               </NuxtLink>
               <div class="mt-2 rounded-xl bg-grey-100 p-3">
