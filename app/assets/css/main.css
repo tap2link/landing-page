@@ -41,6 +41,13 @@
  * `accent-1`/`accent-2` in dark mode only, leaving `primary`/`error-red` themselves untouched).
  * 14.42:1 / 12.44:1 against dark `page` (#0A0A12), 12.55:1 / 10.83:1 against dark `band`/`grey-
  * 100` (#1B1A27) - both comfortably clear 4.5:1 everywhere this site uses them.
+ *
+ * `link-hover-muted` (NEW, Reviewer-flagged, 2026-10-13): the blog article table-of-contents
+ * link's `hover:text-brand-600` is the same fixed-brand-colour-on-flipping-background problem one
+ * shade lighter - `brand-600` #1a4fe0 only clears ~3.04:1 against dark `page`, also short of
+ * 4.5:1 and not the `.link-arrow` exception. `brand-600` itself is unchanged (equal in light,
+ * criterion 12); in dark it switches to `accent-2` #FFC27A, the same already-verified 12.44:1 /
+ * 10.83:1 against dark `page`/`band` as `link-hover` above.
  */
 @font-face {
   font-family: "Inter";
@@ -91,6 +98,7 @@
   --color-heading: #051822; /* headings, borders, pills - navy's light value, Harbor's "ink" bucket */
   --color-link: var(--color-brand-500); /* light = brand-500, unchanged (criterion 12); see note above */
   --color-link-hover: var(--color-brand-700); /* light = brand-700, unchanged (criterion 12) */
+  --color-link-hover-muted: var(--color-brand-600); /* light = brand-600, unchanged (criterion 12); see note above */
 
   /*
    * Fluid type scale. Tailwind resolves text-xs ... text-7xl from these variables, so every
@@ -147,6 +155,7 @@
   --color-heading: #F4F3FA;
   --color-link: #7FF0D8; /* Harbor accent-1, see the generated-block comment above */
   --color-link-hover: #FFC27A; /* Harbor accent-2 */
+  --color-link-hover-muted: #FFC27A; /* Harbor accent-2, see the generated-block comment above */
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-mode='light']) {
@@ -158,6 +167,7 @@
     --color-heading: #F4F3FA;
     --color-link: #7FF0D8;
     --color-link-hover: #FFC27A;
+    --color-link-hover-muted: #FFC27A;
   }
 }
 

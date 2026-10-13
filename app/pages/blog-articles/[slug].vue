@@ -43,7 +43,7 @@ const html = computed(() => article.html.replace(/<h2>(.*?)<\/h2>/g, (_, h) => `
           <ol class="mt-3 space-y-2 text-sm">
             <li v-for="(h, i) in headings" :key="i" class="flex gap-3">
               <span class="font-sans font-semibold text-link">{{ i + 1 }}</span>
-              <a :href="`#${slugify(h)}`" class="hover:text-brand-600" v-html="h" />
+              <a :href="`#${slugify(h)}`" class="hover:text-link-hover-muted" v-html="h" />
             </li>
           </ol>
         </nav>
