@@ -56,7 +56,7 @@ const pillsAfter = (i: number) => (props.pills ?? []).filter((p) => p.after === 
         </template>
       </h2>
       <h2 v-else class="mx-auto max-w-3xl font-sans text-5xl font-medium leading-tight text-white">
-        <span v-if="iconDark" class="mr-3 inline-flex h-[0.9em] w-[0.9em] items-center justify-center rounded-full bg-white align-middle shadow-[0_2px_0_0_#051822]">
+        <span v-if="iconDark" class="mr-3 inline-flex h-[0.9em] w-[0.9em] items-center justify-center rounded-full bg-white align-middle shadow-[0_2px_0_0_var(--color-navy)]">
           <img :src="iconDark" alt="" width="80" height="80" class="h-[55%] w-[55%]" loading="lazy" decoding="async" />
         </span>
         {{ title }}

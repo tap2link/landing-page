@@ -33,8 +33,8 @@ const testimonials = computed(() => tm('business.testimonials.items') as Array<{
       <div class="mt-10 grid gap-5 lg:grid-cols-3">
         <blockquote v-for="(item, i) in testimonials" :key="i" class="card flex flex-col p-7">
           <img src="/images/business/quote-mark.png" alt="" width="272" height="214" class="h-8 w-auto self-start" loading="lazy" decoding="async" />
-          <p class="mt-5 flex-1 text-sm leading-relaxed text-ink/80">{{ rt(item.text) }}</p>
-          <footer class="mt-6 font-sans text-lg font-semibold text-navy">{{ rt(item.author) }}</footer>
+          <p class="mt-5 flex-1 text-sm leading-relaxed text-copy/80">{{ rt(item.text) }}</p>
+          <footer class="mt-6 font-sans text-lg font-semibold text-heading">{{ rt(item.author) }}</footer>
         </blockquote>
       </div>
     </section>

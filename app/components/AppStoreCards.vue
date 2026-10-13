@@ -15,15 +15,15 @@ const { t } = useI18n()
         <span class="inline-flex h-[4.7rem] w-[4.7rem] items-center justify-center rounded-full border-2 border-navy bg-navy">
           <img src="/images/icons/nfc-white.png" alt="" width="80" height="80" class="h-10 w-10" loading="lazy" decoding="async" />
         </span>
-        <span class="inline-flex h-[4.7rem] w-[4.7rem] items-center justify-center rounded-full border-2 border-navy bg-band">
+        <span class="inline-flex h-[4.7rem] w-[4.7rem] items-center justify-center rounded-full border-2 border-heading bg-band">
           <img src="/images/icons/employee-card.png" alt="" width="80" height="80" class="h-10 w-10" loading="lazy" decoding="async" />
         </span>
       </div>
     </div>
 
-    <div class="mt-10 grid gap-6 border-t-2 border-navy pt-10 lg:grid-cols-2 lg:items-start lg:gap-10">
+    <div class="mt-10 grid gap-6 border-t-2 border-heading pt-10 lg:grid-cols-2 lg:items-start lg:gap-10">
       <span class="eyebrow justify-self-start">{{ t('common.whatWeOffer') }}</span>
-      <p class="text-sm leading-relaxed text-ink/80">{{ t('home.assistant.text') }}</p>
+      <p class="text-sm leading-relaxed text-copy/80">{{ t('home.assistant.text') }}</p>
     </div>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2">

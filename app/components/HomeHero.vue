@@ -42,7 +42,7 @@ const bullets = computed(() => tm('home.hero.bullets') as string[])
         <li
           v-for="(b, i) in bullets"
           :key="i"
-          class="flex flex-col items-start gap-3 rounded-[2.25rem] border-2 border-navy bg-white p-6 font-sans text-base font-semibold text-navy lg:flex-row lg:items-center lg:rounded-full lg:py-3 lg:pl-3 lg:pr-6"
+          class="flex flex-col items-start gap-3 rounded-[2.25rem] border-2 border-heading bg-page p-6 font-sans text-base font-semibold text-heading lg:flex-row lg:items-center lg:rounded-full lg:py-3 lg:pl-3 lg:pr-6"
         >
           <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy">
             <img src="/images/icons/plus-white.png" alt="" width="40" height="40" class="h-5 w-5" />

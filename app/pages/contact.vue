@@ -20,7 +20,7 @@ const socials = [
           <a :href="`mailto:${LINKS.contactEmail}`" class="font-sans text-lg font-semibold text-brand-500 underline hover:text-brand-700">{{ LINKS.contactEmail }}</a>
           <ul class="mt-8 space-y-3">
             <li v-for="s in socials" :key="s.href">
-              <a :href="s.href" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-navy bg-white px-5 py-2.5 font-sans text-sm font-semibold text-navy hover:bg-grey-100">
+              <a :href="s.href" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-heading bg-page px-5 py-2.5 font-sans text-sm font-semibold text-heading hover:bg-grey-100">
                 {{ s.label }}
                 <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 14L14 6M8 6h6v6" /></svg>
               </a>

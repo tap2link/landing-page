@@ -11,7 +11,7 @@ function toggle(i: number) {
 <template>
   <div class="mx-auto max-w-3xl space-y-3">
     <div v-for="(item, i) in items" :key="i" class="card overflow-hidden">
-      <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-sans font-semibold text-navy" :aria-expanded="openIndex === i" @click="toggle(i)">
+      <button type="button" class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-sans font-semibold text-heading" :aria-expanded="openIndex === i" @click="toggle(i)">
         {{ rt(item.q) }}
         <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-navy text-white">
           <svg class="h-4 w-4 transition-transform" :class="{ 'rotate-45': openIndex === i }" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -19,7 +19,7 @@ function toggle(i: number) {
           </svg>
         </span>
       </button>
-      <div v-show="openIndex === i" class="px-6 pb-6 text-sm leading-relaxed text-ink/80">
+      <div v-show="openIndex === i" class="px-6 pb-6 text-sm leading-relaxed text-copy/80">
         {{ rt(item.a) }}
       </div>
     </div>
