@@ -26,6 +26,21 @@
  * ("Known dark-mode limitations"). `heading` and `copy` are NEW tokens carrying navy's/ink's own
  * LIGHT value (so light mode is pixel-identical) but mapped onto Harbor's `ink` dark bucket, for
  * every place navy/ink was used as flipping TEXT or a border rather than a fixed dark fill.
+ *
+ * `link`/`link-hover` (NEW, Reviewer-flagged, 2026-10-13): `brand-500`/`brand-700` are, like
+ * `navy`/`ink`, FIXED brand colours (unchanged by mode) - correct for a button fill or a
+ * self-contained chip, but an inline text link using them directly on the page/band background
+ * only clears ~4.0:1/~2.7:1 against the new dark `page`/`band` values, short of criterion 8's
+ * 4.5:1 (the `.link-arrow` exception is the one pairing criterion 8 names by exception; every
+ * other such link is not exempt). Rather than changing `brand-500`/`brand-700` themselves (T2L-
+ * 6-S1's own call, not this slice's - see the Stop conditions), `link`/`link-hover` equal
+ * `brand-500`/`brand-700` in light (pixel-identical, criterion 12) and switch to two more Harbor
+ * primitives in dark - `accent-1` #7FF0D8 / `accent-2` #FFC27A - the exact same per-element
+ * escalation `tap2link-website`'s own README documents under "Known dark-mode limitations" for
+ * an identical brand-colour-on-dark-background problem (its scan-landing icons switch to
+ * `accent-1`/`accent-2` in dark mode only, leaving `primary`/`error-red` themselves untouched).
+ * 14.42:1 / 12.44:1 against dark `page` (#0A0A12), 12.55:1 / 10.83:1 against dark `band`/`grey-
+ * 100` (#1B1A27) - both comfortably clear 4.5:1 everywhere this site uses them.
  */
 @font-face {
   font-family: "Inter";
@@ -74,6 +89,8 @@
   --color-grey-500: #5d6c7b;
   --color-copy: #1a1b1f; /* body/paragraph text - navy's/ink's light value, Harbor's "ink" bucket */
   --color-heading: #051822; /* headings, borders, pills - navy's light value, Harbor's "ink" bucket */
+  --color-link: var(--color-brand-500); /* light = brand-500, unchanged (criterion 12); see note above */
+  --color-link-hover: var(--color-brand-700); /* light = brand-700, unchanged (criterion 12) */
 
   /*
    * Fluid type scale. Tailwind resolves text-xs ... text-7xl from these variables, so every
@@ -128,6 +145,8 @@
   --color-grey-500: #C7C4DA;
   --color-copy: #F4F3FA;
   --color-heading: #F4F3FA;
+  --color-link: #7FF0D8; /* Harbor accent-1, see the generated-block comment above */
+  --color-link-hover: #FFC27A; /* Harbor accent-2 */
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-color-mode='light']) {
@@ -137,6 +156,8 @@
     --color-grey-500: #C7C4DA;
     --color-copy: #F4F3FA;
     --color-heading: #F4F3FA;
+    --color-link: #7FF0D8;
+    --color-link-hover: #FFC27A;
   }
 }
 
@@ -227,7 +248,7 @@
   --tw-prose-body: var(--color-copy);
   --tw-prose-headings: var(--color-heading);
   --tw-prose-lead: var(--color-grey-500);
-  --tw-prose-links: var(--color-brand-500);
+  --tw-prose-links: var(--color-link); /* mode-aware accessible link colour, see generated-block comment above */
   --tw-prose-bold: var(--color-heading);
   --tw-prose-counters: var(--color-grey-500);
   --tw-prose-bullets: var(--color-grey-500);

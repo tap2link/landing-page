@@ -17,7 +17,7 @@ const socials = [
     <section class="container-page pb-20">
       <div class="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
         <div>
-          <a :href="`mailto:${LINKS.contactEmail}`" class="font-sans text-lg font-semibold text-brand-500 underline hover:text-brand-700">{{ LINKS.contactEmail }}</a>
+          <a :href="`mailto:${LINKS.contactEmail}`" class="font-sans text-lg font-semibold text-link underline hover:text-link-hover">{{ LINKS.contactEmail }}</a>
           <ul class="mt-8 space-y-3">
             <li v-for="s in socials" :key="s.href">
               <a :href="s.href" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-heading bg-page px-5 py-2.5 font-sans text-sm font-semibold text-heading hover:bg-grey-100">
