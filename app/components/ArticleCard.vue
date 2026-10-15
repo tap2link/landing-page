@@ -22,7 +22,7 @@ const size = imageSize(props.article.image)
     <div class="flex flex-1 flex-col p-6">
       <p class="font-sans text-xs font-semibold uppercase tracking-wider text-grey-500">{{ dateLabel }}</p>
       <h3 class="mt-2 text-lg font-semibold leading-snug">
-        <NuxtLink :to="localePath(`/blog-articles/${article.slug}`)" class="hover:text-brand-600">{{ article.title }}</NuxtLink>
+        <NuxtLink :to="localePath(`/blog-articles/${article.slug}`)" class="hover:text-link-hover-muted">{{ article.title }}</NuxtLink>
       </h3>
       <p class="mt-3 line-clamp-3 text-sm text-copy/70">{{ article.description }}</p>
       <NuxtLink :to="localePath(`/blog-articles/${article.slug}`)" class="link-arrow mt-auto pt-5">{{ t('common.readPost') }} →</NuxtLink>
