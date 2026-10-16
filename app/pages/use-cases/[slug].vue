@@ -65,7 +65,7 @@ const html = computed(() =>
 <style>
 .use-case-body .eyebrow-inline {
   display: inline-flex;
-  border: 1px solid var(--color-navy);
+  border: 1px solid var(--color-heading);
   border-radius: 9999px;
   padding: 0.25rem 0.75rem;
   font-family: var(--font-sans);

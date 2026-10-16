@@ -24,7 +24,7 @@ async function handleSubmit(event: Event) {
   }
 }
 
-const inputClass = 'mt-1.5 w-full rounded-xl border border-navy/30 bg-white px-4 py-3 text-sm text-ink focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500'
+const inputClass = 'mt-1.5 w-full rounded-xl border border-heading/30 bg-page px-4 py-3 text-sm text-copy focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500'
 </script>
 
 <template>
@@ -45,33 +45,33 @@ const inputClass = 'mt-1.5 w-full rounded-xl border border-navy/30 bg-white px-4
 
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
-          <label for="firstName" class="block font-sans text-sm font-medium text-navy">{{ t('contact.form.firstName') }}</label>
+          <label for="firstName" class="block font-sans text-sm font-medium text-heading">{{ t('contact.form.firstName') }}</label>
           <input id="firstName" name="firstName" type="text" required autocomplete="given-name" :class="inputClass" />
         </div>
         <div>
-          <label for="lastName" class="block font-sans text-sm font-medium text-navy">{{ t('contact.form.lastName') }}</label>
+          <label for="lastName" class="block font-sans text-sm font-medium text-heading">{{ t('contact.form.lastName') }}</label>
           <input id="lastName" name="lastName" type="text" required autocomplete="family-name" :class="inputClass" />
         </div>
       </div>
 
       <div>
-        <label for="email" class="block font-sans text-sm font-medium text-navy">{{ t('contact.form.email') }}</label>
+        <label for="email" class="block font-sans text-sm font-medium text-heading">{{ t('contact.form.email') }}</label>
         <input id="email" name="email" type="email" required autocomplete="email" :class="inputClass" />
       </div>
 
       <div>
-        <label for="company" class="block font-sans text-sm font-medium text-navy">{{ t('contact.form.company') }}</label>
+        <label for="company" class="block font-sans text-sm font-medium text-heading">{{ t('contact.form.company') }}</label>
         <input id="company" name="company" type="text" autocomplete="organization" :class="inputClass" />
       </div>
 
       <div>
-        <label for="message" class="block font-sans text-sm font-medium text-navy">{{ t('contact.form.message') }}</label>
+        <label for="message" class="block font-sans text-sm font-medium text-heading">{{ t('contact.form.message') }}</label>
         <textarea id="message" name="message" rows="5" required :class="inputClass" />
       </div>
 
       <i18n-t keypath="contact.form.privacyNote" tag="p" class="text-xs text-grey-500">
         <template #privacy>
-          <NuxtLink :to="localePath('/privacy-policy')" class="underline hover:text-navy">{{ t('footer.privacy') }}</NuxtLink>
+          <NuxtLink :to="localePath('/privacy-policy')" class="underline hover:text-heading">{{ t('footer.privacy') }}</NuxtLink>
         </template>
       </i18n-t>
 

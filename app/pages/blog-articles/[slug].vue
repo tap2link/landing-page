@@ -33,17 +33,17 @@ const html = computed(() => article.html.replace(/<h2>(.*?)<\/h2>/g, (_, h) => `
         <p class="mt-6 font-sans text-xs font-semibold uppercase tracking-wider text-grey-500">{{ dateLabel }}</p>
         <h1 class="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">{{ article!.title }}</h1>
       </div>
-      <img v-if="article!.image" :src="article!.image" :alt="article!.imageAlt" :width="size.width" :height="size.height" class="mt-10 aspect-[2/1] w-full rounded-[2rem] border border-navy object-cover" decoding="async" />
+      <img v-if="article!.image" :src="article!.image" :alt="article!.imageAlt" :width="size.width" :height="size.height" class="mt-10 aspect-[2/1] w-full rounded-[2rem] border border-heading object-cover" decoding="async" />
     </section>
 
     <section class="container-page py-12">
       <div class="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[260px_1fr]">
         <nav v-if="headings.length" class="lg:sticky lg:top-24 lg:self-start" :aria-label="t('common.tableOfContents')">
-          <p class="font-sans text-sm font-semibold text-navy">{{ t('common.tableOfContents') }}</p>
+          <p class="font-sans text-sm font-semibold text-heading">{{ t('common.tableOfContents') }}</p>
           <ol class="mt-3 space-y-2 text-sm">
             <li v-for="(h, i) in headings" :key="i" class="flex gap-3">
-              <span class="font-sans font-semibold text-brand-500">{{ i + 1 }}</span>
-              <a :href="`#${slugify(h)}`" class="hover:text-brand-600" v-html="h" />
+              <span class="font-sans font-semibold text-link">{{ i + 1 }}</span>
+              <a :href="`#${slugify(h)}`" class="hover:text-link-hover-muted" v-html="h" />
             </li>
           </ol>
         </nav>

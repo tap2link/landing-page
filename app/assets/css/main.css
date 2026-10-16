@@ -7,6 +7,48 @@
  * light blue #638eff, navy #051822, ink #1a1b1f, lime accent #aeea04, page #fafafa, grey #f1f1f1,
  * mid grey #5d6c7b.
  */
+/*
+ * GENERATED token values below (`page`/`band`/`grey-100`/`grey-500`/`copy`/`heading` light+dark,
+ * and the dark-mode override block) are copied from the Harbor token set generated in
+ * `tap2link-website`'s `design-tokens/output/tailwind-theme.css` /
+ * `design-tokens/output/tokens.css` (branch `feature/design-token-base-theme-system-from-harbor-
+ * light`, commit d89459b52c411436393d8c1d5e33e4c0ab10de95, PR #301 - open, not merged; CONCEPT.md
+ * §S2 / T2L-6-D11/D12/D16). Four Harbor dark buckets cover every colour this site needs:
+ *   ground #0A0A12, surface #1B1A27, ink #F4F3FA, ink-muted #C7C4DA.
+ * Do not hand-edit the dark values below; re-copy them from that artefact if it changes before
+ * the PR merges (see the PR description for how this copy is kept in step).
+ *
+ * `navy` (#051822) and `ink` (#1a1b1f) stay FIXED (no dark value) on purpose: a handful of
+ * deliberately permanent-dark panels (`AppFooter.vue`, `.btn-dark`, `AppStoreCards.vue`'s app-
+ * store card, `PricingTable.vue`'s club card, the use-case hero, …) use `bg-navy`/`hover:bg-ink`
+ * literally and must keep rendering the same regardless of mode - exactly the "white stays
+ * ground, one name can't serve two roles" problem `tap2link-website`'s own token README documents
+ * ("Known dark-mode limitations"). `heading` and `copy` are NEW tokens carrying navy's/ink's own
+ * LIGHT value (so light mode is pixel-identical) but mapped onto Harbor's `ink` dark bucket, for
+ * every place navy/ink was used as flipping TEXT or a border rather than a fixed dark fill.
+ *
+ * `link`/`link-hover` (NEW, Reviewer-flagged, 2026-10-13): `brand-500`/`brand-700` are, like
+ * `navy`/`ink`, FIXED brand colours (unchanged by mode) - correct for a button fill or a
+ * self-contained chip, but an inline text link using them directly on the page/band background
+ * only clears ~4.0:1/~2.7:1 against the new dark `page`/`band` values, short of criterion 8's
+ * 4.5:1 (the `.link-arrow` exception is the one pairing criterion 8 names by exception; every
+ * other such link is not exempt). Rather than changing `brand-500`/`brand-700` themselves (T2L-
+ * 6-S1's own call, not this slice's - see the Stop conditions), `link`/`link-hover` equal
+ * `brand-500`/`brand-700` in light (pixel-identical, criterion 12) and switch to two more Harbor
+ * primitives in dark - `accent-1` #7FF0D8 / `accent-2` #FFC27A - the exact same per-element
+ * escalation `tap2link-website`'s own README documents under "Known dark-mode limitations" for
+ * an identical brand-colour-on-dark-background problem (its scan-landing icons switch to
+ * `accent-1`/`accent-2` in dark mode only, leaving `primary`/`error-red` themselves untouched).
+ * 14.42:1 / 12.44:1 against dark `page` (#0A0A12), 12.55:1 / 10.83:1 against dark `band`/`grey-
+ * 100` (#1B1A27) - both comfortably clear 4.5:1 everywhere this site uses them.
+ *
+ * `link-hover-muted` (NEW, Reviewer-flagged, 2026-10-13): the blog article table-of-contents
+ * link's `hover:text-brand-600` is the same fixed-brand-colour-on-flipping-background problem one
+ * shade lighter - `brand-600` #1a4fe0 only clears ~3.04:1 against dark `page`, also short of
+ * 4.5:1 and not the `.link-arrow` exception. `brand-600` itself is unchanged (equal in light,
+ * criterion 12); in dark it switches to `accent-2` #FFC27A, the same already-verified 12.44:1 /
+ * 10.83:1 against dark `page`/`band` as `link-hover` above.
+ */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -42,13 +84,21 @@
   --color-brand-800: #003f94;
   --color-brand-900: #002e6b;
 
+  /* fixed - deliberately permanent-dark panels only, see the generated-block comment above */
   --color-navy: #051822;
   --color-ink: #1a1b1f;
   --color-lime: #aeea04;
+
+  /* flipping - light half; the dark half is overridden below under [data-color-mode='dark'] */
   --color-page: #ffffff;
   --color-band: #f8f8fb; /* the light grey band behind the hero */
   --color-grey-100: #f1f1f1;
   --color-grey-500: #5d6c7b;
+  --color-copy: #1a1b1f; /* body/paragraph text - navy's/ink's light value, Harbor's "ink" bucket */
+  --color-heading: #051822; /* headings, borders, pills - navy's light value, Harbor's "ink" bucket */
+  --color-link: var(--color-brand-500); /* light = brand-500, unchanged (criterion 12); see note above */
+  --color-link-hover: var(--color-brand-700); /* light = brand-700, unchanged (criterion 12) */
+  --color-link-hover-muted: var(--color-brand-600); /* light = brand-600, unchanged (criterion 12); see note above */
 
   /*
    * Fluid type scale. Tailwind resolves text-xs ... text-7xl from these variables, so every
@@ -88,17 +138,50 @@
   --text-7xl--letter-spacing: -0.05em;
 }
 
+/*
+ * Dark half of the flipping tokens (generated block, see the top-of-file comment). One selector
+ * per switch mechanism: the explicit root attribute `useColorMode.ts` sets before first paint,
+ * and a `prefers-color-scheme` fallback for the no-JS/no-cookie case (T2L-6-D12) - same values,
+ * written twice because Tailwind's `@theme` block itself cannot hold a media query or a selector
+ * override. `:not([data-color-mode='light'])` keeps an explicit light override from being
+ * clobbered by a dark OS preference once JS has run.
+ */
+[data-color-mode='dark'] {
+  --color-page: #0A0A12;
+  --color-band: #1B1A27;
+  --color-grey-100: #1B1A27;
+  --color-grey-500: #C7C4DA;
+  --color-copy: #F4F3FA;
+  --color-heading: #F4F3FA;
+  --color-link: #7FF0D8; /* Harbor accent-1, see the generated-block comment above */
+  --color-link-hover: #FFC27A; /* Harbor accent-2 */
+  --color-link-hover-muted: #FFC27A; /* Harbor accent-2, see the generated-block comment above */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-color-mode='light']) {
+    --color-page: #0A0A12;
+    --color-band: #1B1A27;
+    --color-grey-100: #1B1A27;
+    --color-grey-500: #C7C4DA;
+    --color-copy: #F4F3FA;
+    --color-heading: #F4F3FA;
+    --color-link: #7FF0D8;
+    --color-link-hover: #FFC27A;
+    --color-link-hover-muted: #FFC27A;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-page font-sans text-ink antialiased;
+    @apply bg-page font-sans text-copy antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans tracking-tight text-navy;
+    @apply font-sans tracking-tight text-heading;
   }
 }
 
@@ -119,25 +202,26 @@
   }
 
   .btn-primary {
-    @apply btn bg-brand-500 text-white shadow-[0_3px_0_0_#051822] hover:bg-brand-600;
+    @apply btn bg-brand-500 text-white shadow-[0_3px_0_0_var(--color-navy)] hover:bg-brand-600;
   }
   .btn-white {
-    @apply btn bg-white text-navy shadow-[0_3px_0_0_#051822] hover:bg-grey-100;
+    @apply btn bg-page text-heading shadow-[0_3px_0_0_var(--color-navy)] hover:bg-grey-100;
   }
   .btn-outline {
-    @apply btn border border-navy bg-white text-navy hover:bg-grey-100;
+    @apply btn border border-heading bg-page text-heading hover:bg-grey-100;
   }
   .btn-dark {
+    /* deliberately fixed-dark, see the generated-block comment above - not repointed */
     @apply btn bg-navy text-white hover:bg-ink;
   }
 
   /* big rounded card with the dark border used across the old site (36px radius, 2px border) */
   .card {
-    @apply rounded-[2.25rem] border-2 border-navy bg-white;
+    @apply rounded-[2.25rem] border-2 border-heading bg-page;
   }
 
   .eyebrow {
-    @apply inline-flex items-center rounded-full border border-navy px-3 py-1 font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-navy;
+    @apply inline-flex items-center rounded-full border border-heading px-3 py-1 font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-heading;
   }
 
   .link-arrow {
@@ -160,18 +244,34 @@
   }
 }
 
-/* long-form text (legal pages, use cases, blog): Tailwind typography plugin, tuned to the tokens */
+/*
+ * Long-form text (legal pages, use cases, blog): Tailwind typography plugin, tuned to the
+ * tokens. `@tailwindcss/typography`'s own `.prose :where(...)` rules read these `--tw-prose-*`
+ * variables, so setting them here (instead of re-declaring `color` per element, as before) makes
+ * every `prose-neutral` colour - including the ones `.prose-t2l` never overrode by itself, e.g.
+ * list bullets/counters, `<hr>`, blockquote borders, table borders - flip with the rest of the
+ * page instead of staying stuck at `prose-neutral`'s own fixed-light greys (T2L-6-D16,
+ * `LegalPage.vue`/`blog-articles/[slug].vue`/`use-cases/[slug].vue` criterion 4).
+ */
 .prose-t2l {
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  --tw-prose-body: var(--color-copy);
+  --tw-prose-headings: var(--color-heading);
+  --tw-prose-lead: var(--color-grey-500);
+  --tw-prose-links: var(--color-link); /* mode-aware accessible link colour, see generated-block comment above */
+  --tw-prose-bold: var(--color-heading);
+  --tw-prose-counters: var(--color-grey-500);
+  --tw-prose-bullets: var(--color-grey-500);
+  --tw-prose-hr: var(--color-grey-100);
+  --tw-prose-quotes: var(--color-heading);
+  --tw-prose-quote-borders: var(--color-grey-100);
+  --tw-prose-captions: var(--color-grey-500);
+  --tw-prose-code: var(--color-heading);
+  --tw-prose-pre-code: var(--color-grey-100);
+  --tw-prose-pre-bg: var(--color-heading);
+  --tw-prose-th-borders: var(--color-grey-100);
+  --tw-prose-td-borders: var(--color-grey-100);
 }
 .prose-t2l :where(h1, h2, h3, h4) {
   font-family: var(--font-sans);
-  color: var(--color-navy);
-}
-.prose-t2l :where(a) {
-  color: var(--color-brand-500);
-}
-.prose-t2l :where(strong) {
-  color: var(--color-navy);
 }

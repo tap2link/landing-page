@@ -34,7 +34,7 @@ const tiers = computed(() => tm('agro.pricing.tiers') as Array<{ label: string; 
           <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-grey-500">{{ rt(item.eyebrow) }}</p>
           <img :src="whyIcons[i]" :alt="rt(item.alt)" width="240" height="240" class="mt-5 h-20 w-20" loading="lazy" decoding="async" />
           <h3 class="mt-5 text-xl font-semibold">{{ rt(item.title) }}</h3>
-          <p class="mt-2 text-sm text-ink/80">{{ rt(item.text) }}</p>
+          <p class="mt-2 text-sm text-copy/80">{{ rt(item.text) }}</p>
         </article>
       </div>
     </section>
@@ -45,14 +45,14 @@ const tiers = computed(() => tm('agro.pricing.tiers') as Array<{ label: string; 
         <div>
           <span class="eyebrow">{{ t('agro.how.eyebrow') }}</span>
           <h2 class="mt-5 text-4xl font-semibold sm:text-5xl">{{ t('agro.how.title') }}</h2>
-          <p class="mt-4 text-base text-ink/80">{{ t('agro.how.text') }}</p>
+          <p class="mt-4 text-base text-copy/80">{{ t('agro.how.text') }}</p>
         </div>
         <ol class="space-y-4">
           <li v-for="(s, i) in steps" :key="i" class="card flex gap-5 p-6">
             <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy font-sans text-sm font-semibold text-white">{{ i + 1 }}</span>
             <div>
               <h3 class="text-lg font-semibold">{{ rt(s.title) }}</h3>
-              <p class="mt-1 text-sm text-ink/80">{{ rt(s.text) }}</p>
+              <p class="mt-1 text-sm text-copy/80">{{ rt(s.text) }}</p>
             </div>
           </li>
         </ol>
@@ -89,27 +89,27 @@ const tiers = computed(() => tm('agro.pricing.tiers') as Array<{ label: string; 
         <div>
           <span class="eyebrow">{{ t('common.pricing') }}</span>
           <h2 class="mt-5 text-4xl font-semibold sm:text-5xl">{{ t('agro.pricing.title') }}</h2>
-          <p class="mt-4 text-base text-ink/80">{{ t('agro.pricing.text') }}</p>
+          <p class="mt-4 text-base text-copy/80">{{ t('agro.pricing.text') }}</p>
           <NuxtLink :to="localePath('/contact')" class="btn-primary mt-8">{{ t('common.contactUs') }}</NuxtLink>
         </div>
         <div class="card p-6 sm:p-8">
           <div class="flex items-baseline justify-between gap-4">
             <h3 class="text-2xl font-semibold">{{ t('agro.pricing.setupFee') }}</h3>
-            <p class="font-sans text-2xl font-semibold text-navy">{{ t('agro.pricing.setupPrice') }}</p>
+            <p class="font-sans text-2xl font-semibold text-heading">{{ t('agro.pricing.setupPrice') }}</p>
           </div>
-          <p class="mt-5 font-sans text-sm font-semibold text-navy">{{ t('agro.pricing.included') }}</p>
+          <p class="mt-5 font-sans text-sm font-semibold text-heading">{{ t('agro.pricing.included') }}</p>
           <ul class="mt-2 flex flex-wrap gap-2">
-            <li v-for="(inc, i) in includes" :key="i" class="rounded-full border border-navy/30 px-3 py-1 text-xs">{{ rt(inc) }}</li>
+            <li v-for="(inc, i) in includes" :key="i" class="rounded-full border border-heading/30 px-3 py-1 text-xs">{{ rt(inc) }}</li>
           </ul>
-          <p class="mt-6 font-sans text-sm font-semibold text-navy">{{ t('agro.pricing.licence') }}</p>
-          <dl class="mt-2 divide-y divide-dashed divide-navy/30 border-y border-navy/30 text-sm">
+          <p class="mt-6 font-sans text-sm font-semibold text-heading">{{ t('agro.pricing.licence') }}</p>
+          <dl class="mt-2 divide-y divide-dashed divide-heading/30 border-y border-heading/30 text-sm">
             <div v-for="(tier, i) in tiers" :key="i" class="flex justify-between py-2.5">
               <dt>{{ rt(tier.label) }}</dt>
-              <dd class="font-sans font-semibold text-navy">{{ rt(tier.price) }}</dd>
+              <dd class="font-sans font-semibold text-heading">{{ rt(tier.price) }}</dd>
             </div>
             <div class="flex justify-between py-2.5">
               <dt>{{ t('agro.pricing.stickers') }}</dt>
-              <dd class="font-sans font-semibold text-navy">{{ t('agro.pricing.stickerPrice') }}</dd>
+              <dd class="font-sans font-semibold text-heading">{{ t('agro.pricing.stickerPrice') }}</dd>
             </div>
           </dl>
         </div>

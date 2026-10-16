@@ -15,15 +15,15 @@ const { t } = useI18n()
         <span class="inline-flex h-[4.7rem] w-[4.7rem] items-center justify-center rounded-full border-2 border-navy bg-navy">
           <img src="/images/icons/nfc-white.png" alt="" width="80" height="80" class="h-10 w-10" loading="lazy" decoding="async" />
         </span>
-        <span class="inline-flex h-[4.7rem] w-[4.7rem] items-center justify-center rounded-full border-2 border-navy bg-band">
+        <span class="inline-flex h-[4.7rem] w-[4.7rem] items-center justify-center rounded-full border-2 border-heading bg-band">
           <img src="/images/icons/employee-card.png" alt="" width="80" height="80" class="h-10 w-10" loading="lazy" decoding="async" />
         </span>
       </div>
     </div>
 
-    <div class="mt-10 grid gap-6 border-t-2 border-navy pt-10 lg:grid-cols-2 lg:items-start lg:gap-10">
+    <div class="mt-10 grid gap-6 border-t-2 border-heading pt-10 lg:grid-cols-2 lg:items-start lg:gap-10">
       <span class="eyebrow justify-self-start">{{ t('common.whatWeOffer') }}</span>
-      <p class="text-sm leading-relaxed text-ink/80">{{ t('home.assistant.text') }}</p>
+      <p class="text-sm leading-relaxed text-copy/80">{{ t('home.assistant.text') }}</p>
     </div>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2">
@@ -34,7 +34,7 @@ const { t } = useI18n()
       </a>
       <a :href="LINKS.googlePlay" target="_blank" rel="noopener" class="group relative flex min-h-[26.25rem] flex-col justify-between overflow-hidden rounded-[2.25rem] bg-brand-100 p-10 text-navy transition hover:bg-brand-200">
         <svg class="pointer-events-none absolute -bottom-24 -right-20 h-[28rem] w-[28rem] text-navy/[0.07] transition group-hover:text-navy/[0.12]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.43 11.43 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.81 10.81 0 001 18h22a10.81 10.81 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z" /></svg>
-        <h3 class="relative max-w-[7em] font-sans text-3xl font-semibold">{{ t('common.downloadGooglePlay') }}</h3>
+        <h3 class="relative max-w-[7em] font-sans text-3xl font-semibold text-navy">{{ t('common.downloadGooglePlay') }}</h3>
         <img src="/images/badges/google-play-dark.png" :alt="t('common.googlePlayAlt')" width="222" height="75" class="relative mt-8 h-12 w-auto self-start" loading="lazy" decoding="async" />
       </a>
     </div>

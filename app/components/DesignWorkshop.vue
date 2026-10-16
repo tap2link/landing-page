@@ -9,7 +9,7 @@ const localePath = useLocalePath()
     <div class="grid gap-6 lg:grid-cols-[1fr_2fr]">
       <div>
         <h2 class="text-4xl font-semibold leading-tight sm:text-5xl">{{ t('pricing.workshop.title') }}</h2>
-        <p class="mt-4 max-w-xs text-sm text-ink/80">{{ t('pricing.workshop.text') }}</p>
+        <p class="mt-4 max-w-xs text-sm text-copy/80">{{ t('pricing.workshop.text') }}</p>
         <NuxtLink :to="localePath('/contact')" class="btn-primary mt-6">{{ t('common.contactUs') }}</NuxtLink>
       </div>
 
@@ -42,7 +42,10 @@ const localePath = useLocalePath()
         <div class="card relative min-h-[220px] overflow-hidden">
           <img src="/images/pricing/designer.png" :alt="t('pricing.workshop.seniorDesignerAlt')" width="794" height="1190" class="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async" />
           <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/90 to-transparent p-6 pt-12">
-            <h3 class="text-2xl font-semibold">{{ t('pricing.workshop.seniorDesigner') }}</h3>
+            <!-- this fade-to-white overlay is deliberately fixed (readability scrim over a photo,
+                 not a page surface), so its caption must stay fixed-dark too, overriding the
+                 h1-h6 base rule's flipping text-heading - found while tracing this sweep -->
+            <h3 class="text-2xl font-semibold text-navy">{{ t('pricing.workshop.seniorDesigner') }}</h3>
           </div>
         </div>
       </div>

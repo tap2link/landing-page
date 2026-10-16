@@ -25,7 +25,7 @@ const files = ['abyss-blue-card', 'simply-violet-card', 'pure-black-card', 'isla
         <div class="mt-6 flex flex-col gap-3">
           <h3 class="text-xl font-semibold">{{ names[i] ? rt(names[i]!) : '' }}</h3>
           <p class="text-base text-grey-500">{{ t('home.shop.price') }}</p>
-          <NuxtLink :to="localePath('/contact')" class="link-arrow mt-2 w-full justify-between border-t border-dashed border-navy/40 pt-6">
+          <NuxtLink :to="localePath('/contact')" class="link-arrow mt-2 w-full justify-between border-t border-dashed border-heading/40 pt-6">
             {{ t('common.contactUs') }}
             <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6" /></svg>
           </NuxtLink>

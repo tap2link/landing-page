@@ -6,6 +6,11 @@ useHead(() => ({
   link: head.value.link ?? [],
   meta: head.value.meta ?? []
 }))
+
+// Takes over from `nuxt.config.ts`'s pre-paint inline script once Vue has hydrated: reads the
+// `t2l-color-mode` cookie / OS preference and keeps `<html data-color-mode>` in sync with
+// AppHeader.vue's toggle (see composables/useColorMode.ts).
+useColorMode()
 </script>
 
 <template>

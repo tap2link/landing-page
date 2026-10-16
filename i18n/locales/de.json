@@ -14,7 +14,9 @@
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
     "latestPost": "Neuester Beitrag",
-    "switchLanguage": "Zu Englisch wechseln"
+    "switchLanguage": "Zu Englisch wechseln",
+    "switchToLightMode": "Zum hellen Modus wechseln",
+    "switchToDarkMode": "Zum dunklen Modus wechseln"
   },
   "useCases": {
     "moerschen": "Moerschen",
