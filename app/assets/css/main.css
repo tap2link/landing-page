@@ -139,12 +139,10 @@
 }
 
 /*
- * Dark half of the flipping tokens (generated block, see the top-of-file comment). One selector
- * per switch mechanism: the explicit root attribute `useColorMode.ts` sets before first paint,
- * and a `prefers-color-scheme` fallback for the no-JS/no-cookie case (T2L-6-D12) - same values,
- * written twice because Tailwind's `@theme` block itself cannot hold a media query or a selector
- * override. `:not([data-color-mode='light'])` keeps an explicit light override from being
- * clobbered by a dark OS preference once JS has run.
+ * Dark half of the flipping tokens (generated block, see the top-of-file comment). Applied only
+ * via the explicit root attribute `useColorMode.ts` sets before first paint from the stored
+ * `t2l-color-mode` cookie - light is the default, dark only ever appears after the visitor picks
+ * it in the switch (T2L-7-D17); there is no `prefers-color-scheme` fallback.
  */
 [data-color-mode='dark'] {
   --color-page: #0A0A12;
@@ -156,19 +154,6 @@
   --color-link: #7FF0D8; /* Harbor accent-1, see the generated-block comment above */
   --color-link-hover: #FFC27A; /* Harbor accent-2 */
   --color-link-hover-muted: #FFC27A; /* Harbor accent-2, see the generated-block comment above */
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-color-mode='light']) {
-    --color-page: #0A0A12;
-    --color-band: #1B1A27;
-    --color-grey-100: #1B1A27;
-    --color-grey-500: #C7C4DA;
-    --color-copy: #F4F3FA;
-    --color-heading: #F4F3FA;
-    --color-link: #7FF0D8;
-    --color-link-hover: #FFC27A;
-    --color-link-hover-muted: #FFC27A;
-  }
 }
 
 @layer base {

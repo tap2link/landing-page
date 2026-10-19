@@ -63,12 +63,11 @@ export default defineNuxtConfig({
           // visitor's `t2l-color-mode` cookie override never flashes the other mode - the site is
           // fully prerendered (T2L-6-D12), so there is no per-request server to vary the HTML
           // itself. Mirrors `useColorMode.ts`'s own cookie name/attribute exactly.
-          // The try/catch only guards document.cookie itself (throws in a handful of restrictive
-          // contexts, e.g. a sandboxed iframe that disallows cookie access) - the catch body does
-          // the same system-preference fallback computation as the try body's own else-branch, so
-          // a cookie read failure still lands on a correct, intentional mode instead of leaving the
-          // attribute unset.
-          innerHTML: `(function(){var mode='light';try{var m=document.cookie.match(/(?:^|;\\s*)t2l-color-mode=([^;]*)/);var c=m?decodeURIComponent(m[1]):null;mode=(c==='light'||c==='dark')?c:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');}catch(e){mode=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-color-mode',mode);})();`
+          // Light is the default; dark only ever applies from the stored cookie, never from the
+          // visitor's OS/browser `prefers-color-scheme` setting (T2L-7-D17). The try/catch only
+          // guards document.cookie itself (throws in a handful of restrictive contexts, e.g. a
+          // sandboxed iframe that disallows cookie access) - either path falls back to light.
+          innerHTML: `(function(){var mode='light';try{var m=document.cookie.match(/(?:^|;\\s*)t2l-color-mode=([^;]*)/);var c=m?decodeURIComponent(m[1]):null;mode=(c==='light'||c==='dark')?c:'light';}catch(e){mode='light';}document.documentElement.setAttribute('data-color-mode',mode);})();`
         }
       ],
       link: [
