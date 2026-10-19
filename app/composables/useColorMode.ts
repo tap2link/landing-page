@@ -1,8 +1,9 @@
-// Light/dark switch, shared across every `*.t2l.ink` host (T2L-6-D10): system preference by
-// default, a persisted override once the visitor toggles it. The cookie name, value format and
-// `.t2l.ink` domain mirror `tap2link-website`'s own `composables/useColorMode.ts` (T2L-6-S1,
-// branch `feature/design-token-base-theme-system-from-harbor-light`) byte for byte, so a choice
-// made on this site carries over to `t2l.ink`/`land.t2l.ink` and back, and vice versa.
+// Light/dark switch, shared across every `*.t2l.ink` host (T2L-6-D10): light by default, a
+// persisted override once the visitor toggles it - never the OS/browser `prefers-color-scheme`
+// setting (T2L-7-D17). The cookie name, value format and `.t2l.ink` domain mirror
+// `tap2link-website`'s own `composables/useColorMode.ts` (T2L-6-S1, branch
+// `feature/design-token-base-theme-system-from-harbor-light`) byte for byte, so a choice made on
+// this site carries over to `t2l.ink`/`land.t2l.ink` and back, and vice versa.
 //
 // This site is fully prerendered (T2L-6-D12): there is no per-request server to read the cookie
 // from, so the mode is resolved entirely in the browser. The attribute this composable sets on
@@ -24,7 +25,7 @@ function readCookie(): ColorMode | null {
   if (typeof document === 'undefined') return null
   // Mirrors the pre-paint script's own guard (nuxt.config.ts): document.cookie access can throw
   // in a handful of restrictive contexts, and decodeURIComponent throws on a malformed percent
-  // escape - either failure falls back to null (system preference) instead of interrupting
+  // escape - either failure falls back to null (light, the default) instead of interrupting
   // hydration/the composable's setup.
   try {
     const match = document.cookie.match(/(?:^|;\s*)t2l-color-mode=([^;]*)/)
@@ -48,11 +49,6 @@ function writeCookie(mode: ColorMode) {
   document.cookie = `${COLOR_MODE_COOKIE}=${mode}; Max-Age=${maxAge}; Path=/; SameSite=Lax${domain ? `; Domain=${domain}` : ''}`
 }
 
-function systemPrefersDark(): boolean {
-  return typeof window !== 'undefined' && !!window.matchMedia
-    && window.matchMedia('(prefers-color-scheme: dark)').matches
-}
-
 function applyAttr(mode: ColorMode) {
   if (typeof document === 'undefined') return
   document.documentElement.setAttribute(COLOR_MODE_ATTR, mode)
@@ -60,21 +56,15 @@ function applyAttr(mode: ColorMode) {
 
 export const useColorMode = () => {
   // useState, not a plain module-level ref: shared across every component instance on the page
-  // without re-reading the cookie/matchMedia on each call.
+  // without re-reading the cookie on each call.
   const stored = useState<ColorMode | null>('t2l-color-mode-stored', () => null)
-  const systemDark = useState<boolean>('t2l-color-mode-system-dark', () => false)
 
-  const colorMode = computed<ColorMode>(() => stored.value ?? (systemDark.value ? 'dark' : 'light'))
+  const colorMode = computed<ColorMode>(() => stored.value ?? 'light')
   const hasExplicitOverride = computed(() => isColorMode(stored.value))
 
   if (import.meta.client) {
     stored.value = readCookie()
-    systemDark.value = systemPrefersDark()
     applyAttr(colorMode.value)
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-      systemDark.value = event.matches
-    })
 
     watch(colorMode, (mode) => applyAttr(mode))
   }
