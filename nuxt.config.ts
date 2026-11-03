@@ -56,6 +56,14 @@ export default defineNuxtConfig({
     head: {
       // lang, canonical and hreflang alternates come per locale from useLocaleHead() in app.vue
       titleTemplate: '%s · tap2link',
+      meta: [
+        { name: 'theme-color', content: '#2562FF' },
+        // site-level default; usePageSeo sets its own description per page and replaces this one
+        {
+          name: 'description',
+          content: 'Discover Tap2Link and manage events or share information using NFC and QR codes – perfect for companies and sports clubs.'
+        }
+      ],
       script: [
         {
           key: 'color-mode-init',
@@ -71,6 +79,7 @@ export default defineNuxtConfig({
         }
       ],
       link: [
+        { rel: 'manifest', href: '/site.webmanifest' },
         // the tap2link mark from the previous site: 32x32 favicon + 256x256 web clip
         { rel: 'icon', type: 'image/png', href: '/favicon.png', sizes: '32x32' },
         { rel: 'apple-touch-icon', sizes: '256x256', href: '/apple-touch-icon.png' },
